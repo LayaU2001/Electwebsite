@@ -8,7 +8,7 @@
 
     <script>
 
-// i added this on jan 21
+// i added this on jan 21 works for laptop
         document.querySelectorAll('#navbar-links > li').forEach((item) => {
             item.addEventListener('click', () => {
                 const dropdown = item.querySelector('.dropdown');
@@ -17,9 +17,25 @@
         });
         
 
-// i added this on jan 21
+// i added this on jan 21 - works for laptop
+//jan 21
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('#menu-toggle');
+    const navbarLinks = document.querySelector('#navbar-links');
 
+    // Toggle dropdown on menu click
+    menuToggle.addEventListener('click', function() {
+        navbarLinks.classList.toggle('active');
+    });
 
+    // Optional: Close menu if clicked outside
+    document.addEventListener('click', function(event) {
+        if (!navbarLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+            navbarLinks.classList.remove('active');
+        }
+    });
+});
+//jan 21
 
 
         document.addEventListener('DOMContentLoaded', () => {   
@@ -215,6 +231,14 @@
                 })
             })
         })
+
+
+
+
+
+
+
+
     </script>
     <title>Document</title>
 </head>
@@ -231,6 +255,14 @@
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
                 </svg>
             </div>
+
+<!-- jan 21  -->
+            <button id="menu-toggle" class="mobile-menu-toggle">
+                ☰ Menu
+            </button>
+<!-- jan 21 -->
+
+
             <div id="navbar-links">
                 <ul>
                     <li>
