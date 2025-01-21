@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="styles.css">
 
     <script>
+
+// i added this on jan 21
+        document.querySelectorAll('#navbar-links > li').forEach((item) => {
+            item.addEventListener('click', () => {
+                const dropdown = item.querySelector('.dropdown');
+                if (dropdown) dropdown.classList.toggle('active');
+            });
+        });
+        
+
+// i added this on jan 21
+
+
+
+
         document.addEventListener('DOMContentLoaded', () => {   
             // NAVIGATION SCROLLING EFFECT
 
@@ -221,6 +236,15 @@
                     <li>
                         <a href="index.html">
                             Home </a>
+
+                           <!-- THIS IS ADDED ON JAN 21 TUE  -->
+                            <ul class="dropdown">
+                                <li><a href="#">Germany</a></li>
+                                <li><a href="#">Australia</a></li>
+                                <li><a href="#">Switzerland</a></li>
+                                <li><a href="#">Japan</a></li>
+                            </ul>
+                            <!-- THIS IS ADDED ON JAN 21 TUE  -->
                     </li>
 
                     <li>
@@ -602,6 +626,7 @@
                                 </svg>
                             </button>
                         </div>
+                        
                         <div class="product-text-container">
                             <h1>Fire Laptop</h1>
                             <p>$219.99</p>
@@ -748,6 +773,15 @@
                             </button>
                         </div>
                     </li>
+
+
+
+
+
+
+
+
+                    
                 </ul>
             </div>
 

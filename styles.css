@@ -1,5 +1,11 @@
 
 
+<<<<<<< HEAD
+=======
+/* always have logo in images folder inside git folder only
+find bootstrap svg code online for symbol */
+
+>>>>>>> 301dd01 (added jan 21)
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -8,6 +14,132 @@
     margin: 0;
     padding: 0;
 }
+
+
+
+/* THIS IS ADDED ON JAN 21 TUE  */
+
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    list-style: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    padding: 10px 0;
+}
+
+#navbar-links li:hover .dropdown {
+    display: block;
+}
+@media (max-width: 768px) {
+    #navbar-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+.dropdown {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+}
+
+#navbar-links li:hover .dropdown {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+/* THIS IS ADDED ON JAN 21 TUE  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 2 */
+/* 
+#nav-links > ul {
+    display: flex;
+    place-items: center;
+}
+
+.nav-link:not(:last-child) {
+    margin-right: 50px;
+}
+
+nav a {
+    color: rgb(50, 50, 50);
+    text-decoration: none;
+    transition: color .25s ease-in-out;
+}
+
+nav .dropdown a:hover {
+    color: rgb(244, 141, 81);
+}
+
+.nav-link > a {
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.25s ease-in-out;
+}
+
+.nav-link > a {
+}
+border-bottom: 2px solid transparent;
+transition: border-bottom-color 0.25s ease-in-out;}
+
+.nav-link > a:hover {
+border-bottom-color: rgb(244, 141, 81)
+}
+
+
+
+.dropdown {
+    position: fixed;
+    padding-top: 12px;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity .25s ease-in-out;
+}
+
+.dropdown.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dropdown ul {
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    width: calc(220px - 30px);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.dropdown li {
+    padding: 10px;
+} */
+
+
+/* 2 */
+
+
+
+
 
 body {
     background-color: white
