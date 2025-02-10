@@ -1,6 +1,18 @@
 body {
     display: grid;
     min-height: 100vh;
+
+
+
+    /* feb 9 */
+   
+      background: #f4f4f4;
+      /* background-color: #edf2fb; */
+      padding: 20px;
+    
+
+
+
   }
   .hero {
     align-self: start;
@@ -52,3 +64,5 @@ body {
       order: 0;
     }
   }
+
+  

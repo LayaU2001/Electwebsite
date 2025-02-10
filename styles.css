@@ -131,7 +131,8 @@ nav {
 
 
 body {
-    background-color: white
+    /* background-color: white */
+    background: #f4f4f4;
 }
 
 button {
@@ -266,8 +267,8 @@ nav {
 #menu-page-wrapper ul li a {
     color: rgb(64, 64, 64);
     text-decoration: none;
-    font-size: 20px;
-    font-weight: 500;
+    font-size:16px;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased
 }
 
@@ -628,16 +629,19 @@ nav {
     padding: 16px;
 }
 
+/* fo font of components */
 .product-text-container h1 {
     color: #333;
-    font-size: 19px;
+    /* font-size: 19px; */
+    font-size: 12px;
     font-weight: 500;
     margin-bottom: 4px;
 }
 
 .product-text-container p {
     color: rgb(102, 102, 102);
-    font-size: 18px;
+    /* font-size: 18px; */
+    font-size: 11px;
     font-weight: 400;
     margin-bottom: 8px
 }
@@ -645,7 +649,8 @@ nav {
 .product-text-container .blue-button {
     padding: 8px 16px;
     border-radius: 5px;
-    font-size: 15px;
+    /* font-size: 15px; */
+    font-size: 11px;
     cursor: pointer;
 }
 
@@ -1144,3 +1149,6 @@ footer {
         border-radius: 20px;
     }
 }
+
+
+

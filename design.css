@@ -22,9 +22,10 @@
   --color-dark-25: rgba(33, 37, 41, 0.25);
 
   --color-white-100: rgba(255, 255, 255, 1);
-  --color-white-75: rgba(255, 255, 255, 0.75);
+  --color-white-75: rgba(3, 0, 0, 0.75);
   --color-white-50: rgba(255, 255, 255, 0.5);
   --color-white-25: rgba(255, 255, 255, 0.25);
+  /* --color-pink-25: rgba(255, 105, 180, 0.25);   */
 
   --color-green-100: rgba(116, 198, 157, 1);
   --color-green-75: rgba(116, 198, 157, 0.75);
@@ -83,6 +84,7 @@
 .dark-btn {
   color: var(--color-dark-100);
   background-color: var(--color-white-100);
+  /* background-color: var(--color-blue-100); */
   font-family: var(--font-2);
   font-size: var(--h5);
   padding: 10px 40px;
@@ -144,7 +146,11 @@
 */
 
 .hero {
-  background-color: var(--color-green-100);
+   /* background-color: var(--color-green-100); */ */
+  /* background-color: #edf2fb; */
+  /* header of about us */
+  background-color: white; 
+  /* background-color:#edf2fb; */
 }
 
 /**
@@ -157,6 +163,8 @@
   justify-content: space-between;
   padding-top: 30px;
   padding-bottom: 30px;
+ 
+
 }
 
 .navbar__logo {
@@ -164,6 +172,27 @@
   align-items: center;
   gap: 20px;
 }
+
+/*5  */
+
+#navbar {
+  /* width: 85%; */
+   /* margin: auto;  */
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* place-items: center; */
+  /* padding: 12px; */
+}
+
+#navbar-logo img {
+  width: 140px;
+  height: 70px
+}
+/* 5 */
+
+
+
+
 
 .navbar__logo--text {
   font-size: var(--h2);
@@ -179,10 +208,35 @@
   gap: 15px;
 }
 
+
 [class^="navbar__menu-"] {
   text-decoration: none;
-  color: var(--color-white-100);
+  /* color: var(--color-white-100);  */
+     color: var(--color-black-100);
+   /* font-weight: 500;  */
+   font-size: 16px;
+   
+   
+  
 }
+
+.navbar__menu a {
+  display: block; /* Makes the links take full width */
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black /* Text color */
+  background-color: transparent; /* Default background */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.navbar__menu a:hover {
+  background-color: black; /* Changes background to black on hover */
+  color: blue; /* Keeps text white for contrast */
+}
+
+
+
+
 
 .navbar__icons {
   display: none;
@@ -190,7 +244,8 @@
 
 .navbar__icons i {
   font-size: var(--h2);
-  color: var(--color-white-100);
+  /* --- menu for phone */
+  color: var(--color-black-100);
   cursor: pointer;
 }
 
@@ -203,7 +258,10 @@
 **/
 
 .footerWrapper {
-  background-color: var(--color-green-100);
+  /* background-color: var(--color-green-100); */
+  /* background-color:#edf2fb; */
+  background-color: rgba(217, 231, 245, 1);
+
 }
 
 .footerLinks {
@@ -259,7 +317,8 @@
 
   .navbar__menu {
     z-index: 1;
-    background-color: var(--color-green-100);
+    /* background-color: var(--color-green-100); */
+    background-color: #edf2fb;
     position: absolute;
     opacity: 100%;
     top: 100px;
@@ -274,6 +333,7 @@
   }
 
   .navbar__menu--1 {
+    
     margin-top: -200px;
   }
   .navbar__icons {
@@ -295,3 +355,5 @@
     max-width: 90%;
   }
 }
+
+
