@@ -232,12 +232,87 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         })
 
+<!--  -->
 
+document.addEventListener("DOMContentLoaded", () => {
+    let sectionLastElement = {};  
+    let productCardsPerRow = 3;    
+    let marginSpacing = 10;        
 
+    let slideshowButtons = document.querySelectorAll('.slideshow-button');
 
+    function initializeSlideshow() {
+        let slideshowContainers = document.querySelectorAll('[id^="product-section-"]');
 
+        slideshowContainers.forEach(slideshowContainer => {
+            let productCards = slideshowContainer.querySelectorAll('.product-card');
 
+            if (productCards.length > 0) {
+                let currentSection = slideshowContainer.id;
+                sectionLastElement[currentSection] = productCardsPerRow - 1;
 
+                updateSlideshowDisplay(currentSection, productCards);
+            }
+        });
+    }
+
+    function updateSlideshowDisplay(currentSection, productCards) {
+        productCards.forEach((card, i) => {
+            if (i >= (sectionLastElement[currentSection] - (productCardsPerRow - 1)) &&
+                i <= sectionLastElement[currentSection]) {
+                card.classList.add('active');
+                card.style.marginRight = (i === sectionLastElement[currentSection]) ? '0px' : `${marginSpacing}px`;
+            } else {
+                card.classList.remove('active');
+                card.style.marginRight = '0px';
+            }
+        });
+    }
+
+    slideshowButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            let slideshowSection = button.parentElement?.dataset.slideshow;
+            let slideshowContainer = document.querySelector(`#product-section-${slideshowSection}`);
+
+            if (!slideshowContainer) {
+                console.error(`Slideshow container not found for section: ${slideshowSection}`);
+                return;
+            }
+
+            let productCards = slideshowContainer.querySelectorAll('.product-card');
+
+            if (!productCards.length) {
+                console.error("No product cards found in this section.");
+                return;
+            }
+
+            let currentSection = `product-section-${slideshowSection}`;
+            if (!(currentSection in sectionLastElement)) {
+                sectionLastElement[currentSection] = productCardsPerRow - 1;
+            }
+
+            if (button.classList.contains('prev-button')) {
+                if (sectionLastElement[currentSection] <= (productCardsPerRow - 1)) {
+                    sectionLastElement[currentSection] = productCards.length - 1; // Loop to last set
+                } else {
+                    sectionLastElement[currentSection]--;
+                }
+            } else if (button.classList.contains('next-button')) {
+                if (sectionLastElement[currentSection] >= (productCards.length - 1)) {
+                    sectionLastElement[currentSection] = productCardsPerRow - 1; // Loop back to start
+                } else {
+                    sectionLastElement[currentSection]++;
+                }
+            } else {
+                console.log("Slideshow: Error occurred");
+            }
+
+            updateSlideshowDisplay(currentSection, productCards);
+        });
+    });
+
+    initializeSlideshow(); // ✅ Initialize images on page load
+});
 
     </script>
     <title>Document</title>
@@ -2797,7 +2872,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
         </ul>
         <p>
-            Copyright ©  . All rights reserved.
+            Copyright © Sri&co 2024. All rights reserved.
         </p>
     </div>
 </footer>
