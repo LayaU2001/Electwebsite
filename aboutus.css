@@ -33,11 +33,44 @@
     justify-self: center;
   }
   
-  .sectionOne__content--text {
+  /* .sectionOne__content--text {
     font-size: var(--sub);
     font-family: var(--font-2);
     
-  }
+  } */
+
+/* march 21 */
+  .sectionOne__content--text {
+    font-size: var(--sub);
+    font-family: var(--font-2);
+    text-align: justify; /* Ensures text is properly aligned */
+    width: 80%; /* Adjust width as needed */
+    margin-left: 10%; /* Aligns the paragraph properly */
+    padding: 20px; /* Adds spacing */
+    /* border: 2px solid black; */
+     /* Adds border if needed */
+    border-radius: 10px; /* Smooths corners */
+    background-color: #f8f8f8; /* Optional background color */
+}
+
+
+
+
+
+.sectionOne__content--text h2 {
+  font-size: 16px; /* Make heading bigger */
+  font-weight: bold; /* Make it bold */
+  color: #1a1a1a; /* Darker color for better readability */
+  text-transform: uppercase; /* Makes text uppercase for emphasis */
+  margin-bottom: 10px; /* Adds space below heading */
+  border-left: 5px solid #007BFF; /* Adds a blue left border */
+  padding-left: 12px; /* Space between text and border */
+}
+
+
+
+/* march 21 */
+
   
   @media (max-width: 568px) {
     .sectionOne__images {

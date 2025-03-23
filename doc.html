@@ -1,0 +1,205 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple File Upload</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .upload-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 15px;
+            border: 2px dashed #007bff;
+            border-radius: 10px;
+            background-color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .upload-container:hover {
+            background-color: #eef4ff;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .file-info {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        .preview-container {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .preview-item {
+            width: 120px;
+            height: 140px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 5px;
+        }
+        .preview-item img {
+            max-width: 80px;
+            max-height: 80px;
+            border-radius: 5px;
+        }
+        .preview-item p {
+            font-size: 12px;
+            word-wrap: break-word;
+            margin-top: 5px;
+        }
+        .delete-btn {
+            margin-top: 5px;
+            padding: 5px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+        .success-message {
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+            display: none;
+        }
+        @media (max-width: 480px) {
+            .upload-container {
+                width: 90%;
+            }
+            .preview-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Upload MSME & IEC Documents</h2>
+
+    <label class="upload-container" for="fileInput">
+        📂 <strong>Click to Upload Documents</strong>
+    </label>
+    <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.jpg,.png" multiple>
+
+    <div class="file-info" id="fileInfo">No files selected</div>
+
+    <div class="preview-container" id="previewContainer"></div>
+
+    <div class="success-message" id="successMessage">✅ Files uploaded successfully!</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            loadStoredFiles();
+        });
+
+        document.getElementById("fileInput").addEventListener("change", function(event) {
+            const files = Array.from(event.target.files);
+            const storedFiles = JSON.parse(localStorage.getItem("uploadedFiles")) || [];
+
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const fileData = {
+                        name: file.name,
+                        type: file.type,
+                        url: e.target.result
+                    };
+                    storedFiles.push(fileData);
+                    displayFile(fileData);
+                    saveFilesToLocalStorage(storedFiles);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            document.getElementById("fileInfo").textContent = `Selected Files: ${storedFiles.length}`;
+            document.getElementById("successMessage").style.display = "block";
+        });
+
+        function displayFile(fileData) {
+            const previewContainer = document.getElementById("previewContainer");
+            const previewItem = document.createElement("div");
+            previewItem.classList.add("preview-item");
+
+            if (fileData.type.startsWith("image/")) {
+                const img = document.createElement("img");
+                img.src = fileData.url;
+                previewItem.appendChild(img);
+            } else {
+                const fileIcon = document.createElement("p");
+                fileIcon.textContent = "📄 " + fileData.name;
+                previewItem.appendChild(fileIcon);
+            }
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "❌ Remove";
+            deleteBtn.classList.add("delete-btn");
+            deleteBtn.onclick = function () {
+                removeFile(fileData.name);
+            };
+
+            previewItem.appendChild(deleteBtn);
+            previewContainer.appendChild(previewItem);
+        }
+
+        function saveFilesToLocalStorage(files) {
+            localStorage.setItem("uploadedFiles", JSON.stringify(files));
+        }
+
+        function loadStoredFiles() {
+            const storedFiles = JSON.parse(localStorage.getItem("uploadedFiles")) || [];
+            storedFiles.forEach(fileData => displayFile(fileData));
+            if (storedFiles.length > 0) {
+                document.getElementById("fileInfo").textContent = `Selected Files: ${storedFiles.length}`;
+                document.getElementById("successMessage").style.display = "block";
+            }
+        }
+
+        function removeFile(fileName) {
+            let storedFiles = JSON.parse(localStorage.getItem("uploadedFiles")) || [];
+            storedFiles = storedFiles.filter(file => file.name !== fileName);
+            saveFilesToLocalStorage(storedFiles);
+            document.getElementById("previewContainer").innerHTML = "";
+            storedFiles.forEach(fileData => displayFile(fileData));
+
+            if (storedFiles.length === 0) {
+                document.getElementById("fileInfo").textContent = "No files selected";
+                document.getElementById("successMessage").style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

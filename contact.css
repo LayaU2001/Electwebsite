@@ -66,3 +66,14 @@ body {
   }
 
   
+  /*  */
+  .map-container {
+    max-width: none;
+    width: 100vw; /* Use full viewport width */
+}
+
+
+
+
+
+  /*  */
