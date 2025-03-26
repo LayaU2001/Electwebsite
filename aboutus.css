@@ -151,3 +151,108 @@ p {
 }
 
 
+/* march 23 */
+/* Fix section boxes on mobile */
+.about-section .info {
+  background-color: #f0f5ff;  /* Light blue background */
+  padding: 15px 20px;  /* Reduce padding */
+  border-radius: 8px;  /* Keep rounded corners */
+  margin-bottom: 10px;  /* Space between sections */
+}
+
+/* Make text sections responsive */
+.sectionOne__content--text {
+  font-size: 16px;  /* Adjust font size */
+  line-height: 1.5;  /* Improve readability */
+}
+
+/* Ensure proper width & spacing */
+.container {
+  max-width: 100%;  /* Fit within screen */
+  padding: 0 15px;  /* Reduce side spacing */
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 600px) {
+  .about-section .info {
+      padding: 10px 12px;  /* Reduce padding for smaller screens */
+      font-size: 14px;  /* Adjust text size */
+      margin-bottom: 8px;  /* Reduce space between boxes */
+  }
+
+  .sectionOne__content--text {
+      font-size: 14px;  /* Slightly smaller text */
+  }
+}
+
+
+
+
+
+/* march 23 */
+
+/* march 23 */
+
+/* Fix spacing for main container */
+.container {
+  max-width: 90%;  /* Fit screen width */
+  margin: 0 auto;  /* Center it */
+  padding: 20px;  /* Balanced padding */
+}
+
+/* Fix spacing inside sections */
+.sectionOne__content--text {
+  font-size: 16px;  
+  line-height: 1.5;  /* Improves text readability */
+  margin-bottom: 10px;  /* Reduce large spacing */
+}
+
+/* Adjust About Section spacing */
+.about-section {
+  padding: 20px 0;  /* Reduce padding */
+}
+
+/* Fix space between info boxes */
+.about-section .info {
+  background-color: #f0f5ff;  
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 8px;  /* Reduce space between sections */
+}
+
+/* Reduce unnecessary spacing on small screens */
+@media screen and (max-width: 600px) {
+  .container {
+      max-width: 95%;
+      padding: 15px;
+  }
+
+  .sectionOne__content--text {
+      font-size: 14px;
+      margin-bottom: 5px;  /* Reduce extra space */
+  }
+
+  .about-section {
+      padding: 15px 0;
+  }
+
+  .about-section .info {
+      padding: 12px;
+      margin-bottom: 5px;  /* Reduce space between items */
+  }
+}
+
+/* march 23 */
+
+/* march 23 */
+.sectionOne__content--text {
+  text-align: center;  /* Centers the text */
+  line-height: 1.6;  /* Improve readability */
+  word-spacing: normal;
+  letter-spacing: normal;
+  padding: 0;  /* Remove extra padding */
+  margin: 0 auto;  /* Center inside the container */
+  width: 100%;  /* Make sure it covers the full width */
+}
+
+/* march 23 */

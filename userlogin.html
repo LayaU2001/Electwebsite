@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Remix Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="userlogin.css">
+    
+    <title>User Login & Registration</title>
+</head>
+<body>
+
+    <!-- Login Container -->
+    <div class="login container grid" id="loginAccessRegister">
+        
+        <!-- ===== LOGIN FORM ===== -->
+        <div class="login__access">
+            <h1 class="login__title">Log in to your account</h1>
+            
+            <div class="login__area">
+                <form id="loginForm" class="login__form">
+                    <div class="login__content grid">
+                        <div class="login__box">
+                            <input type="email" id="loginEmail" required placeholder=" " class="login__input">
+                            <label for="loginEmail" class="login__label">Email</label>
+                            <i class="ri-mail-fill login__icon"></i>
+                        </div>
+
+                        <div class="login__box">
+                            <input type="password" id="loginPassword" required placeholder=" " class="login__input">
+                            <label for="loginPassword" class="login__label">Password</label>
+                            <i class="ri-eye-off-fill login__icon login__password" id="toggleLoginPassword"></i>
+                        </div>
+                    </div>
+
+                    <a href="contact.html" class="login__forgot">Forgot your password? Contact Admin.</a>
+
+
+                    <button type="submit" class="login__button">Login</button>
+
+                    <p class="login__switch">
+                        Don't have an account? 
+                        <button type="button" id="loginButtonRegister">Create Account</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        
+
+
+        <!-- ===== REGISTER FORM ===== -->
+        <div class="login__register">
+            <!-- <h1 class="login__title">Create new account</h1> -->
+
+            <div class="login__area">
+                <form id="registerForm" class="login__form">
+                    <!-- <div class="login__content grid">
+                        <div class="login__box">
+                            <input type="text" id="registerName" required placeholder=" " class="login__input">
+                            <label for="registerName" class="login__label">Name</label>
+                            <i class="ri-id-card-fill login__icon"></i>
+                        </div>
+
+                        <div class="login__box">
+                            <input type="email" id="registerEmail" required placeholder=" " class="login__input">
+                            <label for="registerEmail" class="login__label">Email</label>
+                            <i class="ri-mail-fill login__icon"></i>
+                        </div>
+
+                        <div class="login__box">
+                            <input type="password" id="registerPassword" required placeholder=" " class="login__input">
+                            <label for="registerPassword" class="login__label">Password</label>
+                            <i class="ri-eye-off-fill login__icon login__password" id="toggleRegisterPassword"></i>
+                        </div>
+                    </div> -->
+
+<!-- 1 -->
+
+
+
+<div class="login__content grid">
+    <div class="login__box">
+        <input type="text" id="registerName" required placeholder=" " class="login__input">
+        <label for="registerName" class="login__label">Name</label>
+        <i class="ri-id-card-fill login__icon"></i>
+    </div>
+
+    <div class="login__box">
+        <input type="tel" id="registerPhone" required placeholder=" " class="login__input">
+        <label for="registerPhone" class="login__label">Phone Number</label>
+        <i class="ri-phone-fill login__icon"></i>
+    </div>
+
+    <div class="login__box">
+        <input type="email" id="registerEmail" required placeholder=" " class="login__input">
+        <label for="registerEmail" class="login__label">Email</label>
+        <i class="ri-mail-fill login__icon"></i>
+    </div>
+
+    <div class="login__box">
+        <input type="password" id="registerPassword" required placeholder=" " class="login__input">
+        <label for="registerPassword" class="login__label">Password</label>
+        <i class="ri-eye-off-fill login__icon login__password" id="toggleRegisterPassword"></i>
+    </div>
+
+    <div class="login__box">
+        <input type="password" id="confirmPassword" required placeholder=" " class="login__input">
+        <label for="confirmPassword" class="login__label">Confirm Password</label>
+        <i class="ri-eye-off-fill login__icon login__password" id="toggleConfirmPassword"></i>
+    </div>
+</div>
+
+
+
+
+
+<!-- 1 -->
+
+                    <button type="submit" class="login__button">Create account</button>
+
+                    <p class="login__switch">
+                        Already have an account? 
+                        <button type="button" id="loginButtonAccess">Log In</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="userlogin.js"></script>
+</body>
+</html>
