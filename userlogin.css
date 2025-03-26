@@ -405,3 +405,29 @@ img {
 
 
 /* mrch 23 */
+
+/* march 26 */
+.hidden {
+  display: none;
+}
+.small-btn {
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  margin: 5px;
+  text-decoration: none;
+  text-align: center;
+}
+.small-btn:hover {
+  background-color: #0056b3;
+}
+#userAdminButtons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+/* march 26 */
