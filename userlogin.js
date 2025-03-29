@@ -1,8 +1,3 @@
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
 
     // ===================== REGISTER FUNCTION =====================
@@ -61,7 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (password === userData.password) {
             alert(`Welcome, ${userData.name}! Login successful.`);
-            window.location.href = "index.html"; // Redirect after login
+            
+            // Store user name in localStorage
+            localStorage.setItem("userName", userData.name);
+            
+            // Redirect to welcome page instead of index.html
+            window.location.href = "welcome.html"; 
         } else {
             alert("Invalid email or password!");
         }
