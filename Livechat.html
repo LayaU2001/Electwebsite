@@ -206,6 +206,86 @@ body {
     background-color: var(--light);
 }
 
+/**/
+
+/* Mobile Responsive Styles (≤ 768px) */
+@media (max-width: 768px) {
+    /* General adjustments */
+    .container {
+      padding: 0 0.5rem;
+      margin: 1rem auto;
+      width: 100%;
+      overflow-x: hidden; /* Prevents horizontal scroll */
+    }
+  
+    /* Support cards - compressed side-by-side layout */
+    .support-options {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(90px, 1fr)); /* Reduced min-width */
+      gap: 0.4rem; /* Smaller gap */
+      padding-bottom: 0;
+      width: 100%;
+    }
+  
+    .support-card {
+      padding: 0.5rem;
+      min-height: 140px;
+      width: 100%;
+      box-sizing: border-box; /* Includes padding in width */
+    }
+  
+    /* Font adjustments */
+    .support-card i {
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+  
+    .support-card h3 {
+      font-size: 0.85rem;
+      margin-bottom: 0.2rem;
+    }
+  
+    .support-card p {
+      font-size: 0.7rem;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* Limit to 2 lines */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  
+    .support-card a {
+      font-size: 0.65rem;
+    }
+  }
+
+
+
+
+
+  @media (max-width: 768px) {
+    .support-options {
+      grid-template-columns: repeat(2, minmax(130px, 1fr));
+      grid-template-rows: repeat(2, auto);
+      gap: 0.6rem;
+    }
+    .support-card {
+      min-height: 120px;
+    }
+  }
+
+
+
+
+
+
+
+
+/**/
+
+
+
 
 </style>
 
