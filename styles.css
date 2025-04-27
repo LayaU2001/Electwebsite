@@ -316,9 +316,11 @@ nav {
     justify-content: center;
 }
 
+ 
+/*  this is for welcome segment*/
 #product-top-wrapper {
     /* background-color: #edf2fb; */
-    background-color: #FFFFFF;
+    background-color:#0099FF;;
     width: 100%;
     height: 320px;
     overflow: hidden;
@@ -473,7 +475,7 @@ nav {
 
 .product-category-image-section {
     /* background-color: rgb(231, 238, 252); */
-   background-color: #FFFFFF;
+   background-color:#0088CC;
     display: flex;
     justify-content: center;
     place-items: center;
@@ -585,7 +587,7 @@ nav {
 }
 
 .product-cards-container .product-card {
-    background-color: #FFFFFF;
+    background-color:#0088CC;
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(71, 71, 71, 0.1);
     text-align: left;
@@ -611,7 +613,7 @@ nav {
 
 .product-image-container {
     /* background-color: rgb(231, 238, 252); */
-   background-color: #FFFFFF;
+   background-color: #333333;
     padding: 20px;
     height: 198px;
     display: flex;
@@ -1546,3 +1548,8 @@ li a[href="login.html"] {
 .contact-methods a {
     font-weight: normal;
 }
+
+
+
+/*  */
+
