@@ -50,7 +50,7 @@
     /* border: 2px solid black; */
      /* Adds border if needed */
     border-radius: 10px; /* Smooths corners */
-    background-color: #f8f8f8; /* Optional background color */
+    background-color: #FFFFFF; /* Optional background color */
 }
 
 
@@ -60,10 +60,11 @@
 .sectionOne__content--text h2 {
   font-size: 16px; /* Make heading bigger */
   font-weight: bold; /* Make it bold */
-  color: #1a1a1a; /* Darker color for better readability */
+  /* color: #1a1a1a; Darker color for better readability */
+  color:#121212;
   text-transform: uppercase; /* Makes text uppercase for emphasis */
   margin-bottom: 10px; /* Adds space below heading */
-  border-left: 5px solid #007BFF; /* Adds a blue left border */
+  border-left: 5px solid #0A74DA; /* Adds a blue left border*/
   padding-left: 12px; /* Space between text and border */
 }
 
@@ -97,7 +98,7 @@ body {
 
 /* About Us Section */
 .about-section {
-  background: white;
+  background: #FFFFFF;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -109,7 +110,8 @@ body {
 h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: #333;
+  /* color: #333; */
+  color:#121212;
 }
 
 /* Individual Info Block */
@@ -117,21 +119,23 @@ h1 {
   margin-bottom: 15px;
   padding: 15px;
   /* background: #e8e8e8; */
-  background-color: #edf2fb;
+  background-color: #FFFFFF;
   border-radius: 5px;
 }
 
 /* Section Title */
 h2 {
   font-size: 18px;
-  color: #444;
+  /* color: #444; */
+  color:#121212;
   margin-bottom: 5px;
 }
 
 /* Paragraph Styling */
 p {
   font-size: 16px;
-  color: #555;
+  /* color: #555; */
+  color:#121212;
 }
 
 /* Responsive Design */
@@ -154,7 +158,8 @@ p {
 /* march 23 */
 /* Fix section boxes on mobile */
 .about-section .info {
-  background-color: #f0f5ff;  /* Light blue background */
+  /* background-color: #f0f5ff;  Light blue background */
+  background-color: #0099FF;
   padding: 15px 20px;  /* Reduce padding */
   border-radius: 8px;  /* Keep rounded corners */
   margin-bottom: 10px;  /* Space between sections */
@@ -214,7 +219,8 @@ p {
 
 /* Fix space between info boxes */
 .about-section .info {
-  background-color: #f0f5ff;  
+  /* background-color: #f0f5ff;   */
+  background-color: #0099FF;
   padding: 15px 20px;
   border-radius: 8px;
   margin-bottom: 8px;  /* Reduce space between sections */

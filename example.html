@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <title>Search Products</title>
+  <style>
+   /* Default font size for mobile (smaller screens) */
+h1 {
+  font-size: 19px; /* Mobile font size */
+}
+
+
+  
+
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .product-section {
+      max-width: 1200px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-section-top-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .section-category-type {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .blue-line {
+      width: 5px;
+      height: 20px;
+      background-color: #007bff;
+      margin-right: 10px;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .search-container input {
+      padding: 8px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .product-cards-container ul {
+      list-style: none;
+      font-size: 10px;;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 0;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image-container img {
+      width: 100%;
+      height: 140px;
+      object-fit: contain;
+    }
+
+    .blue-button {
+      margin-top: 10px;
+      padding: 8px 14px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .blue-button:hover {
+      background-color: #0056b3;
+    }
+
+
+    .product-card p {
+      font-size: 0.9rem;
+    }
+    
+/* THIUS WAS ADDEED FOR RESPONSIVE SEARCH BAR */
+/* Responsive Styles */
+
+/* Medium devices (Tablets) */
+
+
+@media (max-width: 768px) {
+  .product-section {
+      padding: 15px;
+  }
+
+  .section-category-type {
+      font-size: 16px;
+  }
+
+  .product-section-top-container {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .search-container {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .search-input {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+  .product-item {
+      width: 48%; /* Two items per row */
+      margin-bottom: 15px;
+  }
+
+  .product-item h3 {
+      font-size: 14px;
+  }
+
+  .product-item p {
+      font-size: 13px;
+  }
+}
+
+/* Small devices (Mobile Phones) */
+@media (max-width: 480px) {
+  .product-section {
+      padding: 10px;
+  }
+
+  .section-category-type {
+      font-size: 14px;
+  }
+
+  .product-section-top-container {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .search-container {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .search-input {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+  .product-item {
+      width: 100%; /* Full width for mobile */
+      margin-bottom: 10px;
+  }
+
+  .product-item h3 {
+      font-size: 12px; /* Reduced font size */
+  }
+
+  .product-item p {
+      font-size: 11px; /* Reduced font size */
+  }
+}
+/* THIUS WAS ADDEED FOR RESPONSIVE SEARCH BAR */
+
+/*THIS IS FOR QUOTE */
+/* Popup covers full screen */
+.popup {
+  display: none; /* Hidden initially */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* dark background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup white box */
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%; /* Default width for mobile */
+  max-width: 400px; /* Maximum width for bigger screens */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Popup Text */
+.popup-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Popup OK button */
+.popup-content button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #3085d6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Button hover effect */
+.popup-content button:hover {
+  background-color: #2563eb;
+}
+
+/* Responsive adjustments */
+@media (min-width: 600px) {
+  .popup-content {
+    width: 80%;
+    max-width: 450px;
+  }
+}
+
+@media (min-width: 768px) {
+  .popup-content {
+    width: 70%;
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .popup-content {
+    width: 50%;
+    max-width: 550px;
+  }
+}
+/*THIS IS FOR QUOTE */
+
+  </style>
+</head>
+<body>
+
+  <div id="customPopup" class="popup">
+    <div class="popup-content">
+      <p>⚡ Minimum order should be 5000.</p>
+      <button onclick="closePopup()">OK</button>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="product-section">
+    <div class="product-section-top-container">
+      <div class="section-category-type">
+        <span class="blue-line"></span>
+        <span>Search for Electronic Devices & Components</span>
+      </div>
+      <div>
+        <button onclick="prevPage()" class="blue-button">&#8678; Prev</button>
+        <button onclick="nextPage()" class="blue-button">Next &#8680;</button>
+      </div>
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()">
+    </div>
+
+    <div class="product-cards-container">
+      <ul id="productList"></ul>
+    </div>
+  </div>
+
+  <script>
+    const allProducts = [
+    {
+        name: "Analog Devices AD526JNZ Semiconductor",
+        img: "images/23.png",
+        description: "Part Number: C408905"
+      },
+
+      
+  {
+    name: "Analog Devices AD539JNZ Semiconductor",
+    img: "images/24.png",
+    description: "Manufacturer Part Number: AD539JNZLCSC"
+  },
+  {
+    name: "Analog Devices AD561JNZ Semiconductor",
+    img: "images/25.png",
+    description: "Mouser No.: 584-AD561JNZ"
+  },
+  {
+    name: "AD557JNZ Semiconductor Rectifier",
+    img: "images/26.png",
+    description: "Package: PDIP-16 | Current Output: 16 mA-bit resolution"
+  },
+  {
+    name: "Bat20jfilm Rectifiers",
+    img: "images/27.png",
+    description: "Brand: STMicroelectronics | Maximum Operating Temperature: 150"
+  }
+
+,
+      
+
+{
+    name: "Microchip Integrated Circuits",
+    img: "images/28.png",
+    description1: "Usage/Application: Electronics",
+    description2: "Mounting Type: SMD"
+},
+
+
+  {
+    name: "AD8065ARZ AD8065ARZ-REEL",
+    img: "images/29.png",
+    description: "AD8065ARZ AD8065ARZ-REEL"
+  },
+  {
+    name: "ic-uc3844bn-stmicroelectronics",
+    img: "images/30.png",
+    description: "ic-uc3844bn-stmicroelectronics"
+  },
+  {
+    name: "switching-controllers-regulating-pulse-ic-sg3524n-ti-125x125",
+    img: "images/31.png",
+    description: "switching-controllers-regulating-pulse-ic-sg3524n-ti-125x125"
+  },
+  {
+    name: "cd4013be-ti-flip-flops-dual-cmos-ic",
+    img: "images/32.png",
+    description: "cd4013be-ti-flip-flops-dual-cmos-ic"
+  }
+,
+
+
+
+
+  {
+    name: "STM32F030K6T6 ST Microcontrollers",
+    img: "images/38.png",
+    description: "Part Number: STM32F030K6T6, Dimensions: LQFP 32"
+  },
+  {
+    name: "Microcontroller Ic Chip",
+    img: "images/39.png",
+    description: ""
+  },
+  {
+    name: "integrated-circuits-atmega8a-au-microchip-technology-atmel-125x125",
+    img: "images/40.png",
+    description: ""
+  },
+  {
+    name: "Microchip Microcontroller",
+    img: "images/42.png",
+    description: ""
+  },
+
+
+  {
+    name: "Microcontroller Ic",
+    img: "images/43.png",
+    description: ""
+  },
+
+  
+  {
+    "name": "SM4224",
+    "img": "images/51.png",
+    "description": ""
+  },
+  {
+    "name": "2007198-2",
+    "img": "images/52.png",
+    "description": ""
+  },
+  {
+    "name": "1888247-1",
+    "img": "images/53.png",
+    "description": ""
+  },
+  {
+    "name": "SC2011C",
+    "img": "images/54.png",
+    "description": ""
+  },
+  {
+    "name": "SM5724A",
+    "img": "images/55.png",
+    "description": ""
+  }
+,
+
+{
+    name: "B340LB-13-F Rectifier Diode Schottky",
+    img: "images/56.png",
+    description: "Maximum Operating Temperature: 150 Degree, Brand: Diodes Incorporated"
+  },
+  {
+    name: "B340LB-13-F , B340LB-13F",
+    img: "images/57.png",
+    description: ""
+  },
+
+  
+  {
+    "name": "Analog Devices ADM2587EBRWZ-REEL7 Semiconductor Rectifier",
+    "img": "images/18.png",
+    "description": "Brand: Analog Devices, Usage/Application: Electronics"
+  },
+  {
+    "name": "DS12C887 , DS12C887+",
+    "img": "images/19.png",
+    "description": "Mounting Type: DIP, Memory: 113B, Usage/Application: Clock & Timer ICs"
+  },
+  {
+    "name": "MCP1525T-I/TT , MCP1525T-I TT",
+    "img": "images/20.png",
+    "description": ""
+  },
+  {
+    "name": "DRV8432DKD , DRV8432DKD",
+    "img": "images/21.png",
+    "description": ""
+  },
+  {
+    "name": "SN74AHC125D",
+    "img": "images/22.png",
+    "description": ""
+  }
+,
+
+
+
+  {
+    name: "Arduino Boards (Open-source hardware)",
+    img: "images/101.png",
+    description: ""
+  },
+  {
+    name: "Raspberry Pi",
+    img: "images/102.png",
+    description: "Single-board computer with proprietary components"
+  },
+  {
+    name: "ESP8266/ESP32 Modules",
+    img: "images/103.png",
+    description: "Wi-Fi microcontrollers by Espresso if, commonly used in IoT projects"
+  },
+  {
+    name: "PCB Prototypes & DIY Kits",
+    img: "images/104.png",
+    description: ""
+  },
+
+  
+  {
+    "name": "Sensors (Temperature, Motion, Gas ..)",
+    "img": "images/115.png",
+    "description": "Various sensors for detecting temperature, motion, gas, and more."
+  },
+  {
+    "name": "Resistors",
+    "img": "images/116.png",
+    "description": "Electronic components that resist the flow of current to control voltage and current."
+  },
+  {
+    "name": "Capacitors",
+    "img": "images/117.png",
+    "description": "Devices that store and release electrical energy, used for filtering and timing circuits."
+  },
+  {
+    "name": "Diodes",
+    "img": "images/118.png",
+    "description": "Semiconductor devices that allow current to flow in one direction only."
+  },
+  {
+    "name": "Transistors",
+    "img": "images/119.png",
+    "description": "Semiconductor devices used to amplify or switch electronic signals and electrical power."
+  },
+  {
+    "name": "Generic Lithium-ion Batteries",
+    "img": "images/120.png",
+    "description": "Rechargeable batteries commonly used in portable electronics and electric vehicles."
+  }
+,
+
+
+  {
+    "name": "Laptop",
+    "img": "images/130.png",
+    "description": ""
+  },
+  {
+    "name": "Desktop PC",
+    "img": "images/131.png",
+    "description": ""
+  },
+  {
+    "name": "Online UPS systems",
+    "img": "images/132.png",
+    "description": ""
+  },
+  {
+    "name": "Inverters",
+    "img": "images/133.png",
+    "description": ""
+  },
+  {
+    "name": "Batteries",
+    "img": "images/134.png",
+    "description": ""
+  },
+  {
+    "name": "Semiconductors",
+    "img": "images/135.png",
+    "description": ""
+  }
+,
+
+
+/*
+      { name: "Laptop", img: "images/130.png" },
+      { name: "Desktop PC", img: "images/131.png" },
+      { name: "Online UPS systems", img: "images/132.png" },
+      { name: "Inverters", img: "images/133.png" },
+      { name: "Batteries", img: "images/134.png" },
+      { name: "Smartphone", img: "images/135.png" },
+      { name: "LED Monitor", img: "images/136.png" },
+      { name: "Hard Drive", img: "images/137.png" },
+      { name: "Router", img: "images/138.png" },
+      { name: "Printer", img: "images/139.png" },
+      { name: "Projector", img: "images/140.png" },
+      { name: "Motherboard", img: "images/141.png" },
+      { name: "Keyboard", img: "images/142.png" },
+      { name: "Mouse", img: "images/143.png" }
+       */
+    ];
+
+    const productList = document.getElementById("productList");
+const searchInput = document.getElementById("searchInput");
+
+let currentPage = 1;
+const itemsPerPage = 5;
+let filteredProducts = []; // Initially empty, set in `init`
+
+// ✅ Renders current page of filteredProducts
+function displayProducts() {
+  productList.innerHTML = ""; // Clear previous
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = filteredProducts.slice(startIndex, endIndex);
+
+  const fragment = document.createDocumentFragment(); // Performance: reduces reflows
+
+  currentItems.forEach(product => {
+    const li = document.createElement("li");
+    li.className = "product-card";
+    li.innerHTML = `
+      <div class="product-image-container">
+        <img src="${product.img}" alt="${product.name}">
+      </div>
+      <h1>${product.name}</h1>
+      <p>${product.description}</p>
+      
+      <button class="blue-button" onclick="openPopup()">Get Quote</button>
+
+
+
+    `;
+    fragment.appendChild(li);
+  });
+
+  productList.appendChild(fragment);
+}
+
+// ✅ Filters products based on input and resets pagination
+function filterProducts() {
+  const query = searchInput.value.trim().toLowerCase();
+
+  if (query.length === 1) {
+    // Show products that START with that letter
+    filteredProducts = allProducts.filter(product =>
+      product.name.toLowerCase().startsWith(query)
+    );
+  } else {
+    // Normal filter: show if name CONTAINS query
+    filteredProducts = allProducts.filter(product =>
+      product.name.toLowerCase().includes(query)
+    );
+  }
+
+  currentPage = 1;
+  displayProducts();
+}
+
+
+// ✅ Pagination helpers
+function nextPage() {
+  const maxPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  if (currentPage < maxPages) {
+    currentPage++;
+    displayProducts();
+  }
+}
+
+function prevPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    displayProducts();
+  }
+}
+
+// ✅ Optional: Debounce input for better UX on fast typing
+function debounce(fn, delay = 300) {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
+// ✅ Initialize on page load
+function init() {
+  filteredProducts = [...allProducts];
+  searchInput.focus();
+  displayProducts();
+  searchInput.addEventListener("input", debounce(filterProducts));
+}
+
+window.onload = init;
+
+
+function openPopup() {
+  document.getElementById('customPopup').style.display = 'flex';
+}
+
+function closePopup() {
+  document.getElementById('customPopup').style.display = 'none';
+}
+
+    
+  </script>
+</body>
+</html>

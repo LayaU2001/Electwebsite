@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Work Sans", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #262a2f;
+    color: #333;
+}
+
+.search-box {
+    width: 600px;
+    background: #fff;
+    margin: 100px auto;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+input {
+    flex: 1;
+    height: 50px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #333;
+    background: transparent;
+}
+
+button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+button .fa-solid {
+    font-size: 22px;
+    color: #555;
+}
+
+::placeholder {
+    color: #555;
+}
+
+.result-box {
+    max-height: 300px;
+    overflow-y: auto;
+    border-top: 1px solid #ddd;
+}
+
+.result-box ul {
+    list-style-type: none;
+    padding: 10px;
+}
+
+.result-box ul li {
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+.result-box ul li:hover {
+    background: #e9f3ff;
+}

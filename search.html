@@ -1,0 +1,140 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Complete Search Box</title>
+    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="search-box">
+        <div class="row">
+            <input type="text" id="input-box" placeholder="Search Anything..." autocomplete="off">
+            <button><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div class="result-box"></div>
+    </div>
+
+    <script src="search.js"></script>
+
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: none;
+      width: 250px;
+    }
+
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      justify-content: flex-start;
+    }
+
+    .product-card {
+      width: 200px;
+      padding: 15px;
+      background-color: #f4f4f4;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h2>My Store</h2>
+    <input type="text" id="searchInput" placeholder="Search for products...">
+  </nav>
+
+  <div class="product-container" id="productContainer">
+    <!-- Example product cards -->
+  
+    <!-- <div class="product-card">Shirt</div>
+    <div class="product-card">Jeans</div>
+    <div class="product-card">T-Shirt</div>
+    <div class="product-card">Shoes</div>
+    <div class="product-card">Watch</div>
+    <div class="product-card">Bag</div>
+    <div class="product-card">Sunglasses</div>
+    <div class="product-card">Hat</div>
+    <div class="product-card">Kurta</div>
+    <div class="product-card">Dress</div>
+    <div class="product-card">Jacket</div>
+    <div class="product-card">Scarf</div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const productContainer = document.getElementById("productContainer");
+
+    const originalCards = Array.from(productContainer.getElementsByClassName("product-card"));
+
+    searchInput.addEventListener("input", () => {
+      const searchValue = searchInput.value.toLowerCase().trim();
+
+      const matched = [];
+      const unmatched = [];
+
+      originalCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.startsWith(searchValue)) {
+          card.classList.remove("hidden");
+          matched.push(card);
+        } else {
+          card.classList.add("hidden");
+          unmatched.push(card);
+        }
+      }); -->
+
+      <!-- // Reset to original if search is empty
+      if (searchValue === "") {
+        productContainer.innerHTML = "";
+        originalCards.forEach(card => {
+          card.classList.remove("hidden");
+          productContainer.appendChild(card);
+        });
+      } else {
+        // Rebuild the container with only matched
+        productContainer.innerHTML = "";
+        matched.forEach(card => productContainer.appendChild(card));
+      }
+    });
+  </script> -->
+
+<!-- </body>
+</html>  -->
+
+

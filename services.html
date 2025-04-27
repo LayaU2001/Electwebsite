@@ -1,1 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSolutions - Product Support</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS styles would go here */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-color: #1f2937;
+            --light-bg: #f9fafb;
+            --white: #ffffff;
+            --gray: #6b7280;
+            --dark-gray: #374151;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            background-color: var(--light-bg);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+        }
+        
+        .testimonial-product {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .testimonial-rating {
+            color: #f59e0b;
+            margin: 10px 0;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            color: var(--dark-gray);
+        }
+        
+        /* Support Section */
+        .support {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .support-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .faq-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 15px 20px;
+            background-color: var(--white);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            background-color: var(--white);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-answer.active {
+            padding: 15px 20px;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s;
+        }
+        
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+        
+        /* Chat Support */
+        .chat-support {
+            position: relative;
+        }
+        
+        .chat-container {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-header {
+            padding: 15px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chat-header i {
+            margin-right: 10px;
+        }
+        
+        .chat-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+        
+        .customer-message {
+            margin-left: auto;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 18px 18px 0 18px;
+        }
+        
+        .support-message {
+            margin-right: auto;
+            background-color: #e5e7eb;
+            padding: 10px 15px;
+            border-radius: 18px 18px 18px 0;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .chat-input input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            margin-right: 10px;
+            outline: none;
+        }
+        
+        .chat-input button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .chat-input button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .review-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            margin: 0 5px 10px;
+            background-color: var(--light-bg);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .review-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .review-product {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .review-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .review-rating {
+            color: #f59e0b;
+            margin-bottom: 10px;
+        }
+        
+        .review-content {
+            margin-bottom: 15px;
+        }
+        
+        .review-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .review-image {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .review-helpful {
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .review-helpful button {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #4b5563;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+        
+        /* Chat bubble */
+        .chat-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .support-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">TechSolutions</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <section class="hero">
+        <div class="container">
+            <h1>Product Support Center</h1>
+            <p>Find answers to your questions, connect with our support team, and read reviews from other customers about our electronic products.</p>
+            <a href="#support" class="btn">Get Help Now</a>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Customer Testimonials</h2>
+            </div>
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-author">Sarah Johnson</div>
+                            <div class="testimonial-product">Smart Home Hub Pro</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-content">"The Smart Home Hub has completely transformed how I manage my home. The setup was easy and the customer support team was incredibly helpful when I had questions."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael Chen" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-author">Michael Chen</div>
+                            <div class="testimonial-product">4K Action Camera</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-content">"I've used many action cameras, but this one stands out. The image stabilization is phenomenal, and when I needed help with the mobile app, support responded within minutes."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-author">Emily Rodriguez</div>
+                            <div class="testimonial-product">Wireless Noise-Canceling Headphones</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-content">"These headphones are worth every penny! The battery life is amazing, and the noise cancellation works better than any I've tried. The quick start guide made setup a breeze."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support" id="support">
+        <div class="container">
+            <div class="section-title">
+                <h2>Product Support</h2>
+            </div>
+            <div class="support-container">
+                <div class="faq-section">
+                    <h3>Frequently Asked Questions</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How do I set up my new device?
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Most of our products come with a quick start guide. You can also find detailed setup instructions in the product manual available on our website. For visual guidance, check out our YouTube channel with step-by-step setup videos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What's included in the warranty?
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our standard warranty covers manufacturing defects for one year from the date of purchase. This includes parts and labor for repairs. The warranty doesn't cover accidental damage or normal wear and tear. You can extend your warranty up to 3 years at checkout.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How do I update my device firmware?
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Firmware updates are typically delivered through our companion app. Open the app, go to Device Settings, and check for updates. Make sure your device is charged or plugged in during the update process.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Where can I find replacement parts?
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Replacement parts are available in the Accessories section of our website. If you can't find what you're looking for, contact our support team with your device model number and we'll help locate the right parts for you.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How do I contact customer support?
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can reach our support team 24/7 through the live chat on this page, by email at support@techsolutions.com, or by phone at 1-800-TECH-HELP. Average response time is under 15 minutes for chat and email.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-support">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <i class="fas fa-headset"></i>
+                            <h3>Live Support Chat</h3>
+                        </div>
+                        <div class="chat-messages" id="chat-messages">
+                            <!-- Messages will appear here -->
+                            <div class="message support-message">
+                                Hello! Thanks for reaching out to TechSolutions support. How can we help you today?
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="chat-input" placeholder="Type your message here..." autocomplete="off">
+                            <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Product Reviews</h2>
+            </div>
+            
+            <div class="review-filters">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="headphones">Headphones</button>
+                <button class="filter-btn" data-filter="camera">Cameras</button>
+                <button class="filter-btn" data-filter="smart-home">Smart Home</button>
+                <button class="filter-btn" data-filter="wearables">Wearables</button>
+                <button class="filter-btn" data-filter="5-star">5 Star</button>
+                <button class="filter-btn" data-filter="4-star">4 Star</button>
+                <button class="filter-btn" data-filter="with-media">With Media</button>
+            </div>
+            
+            <div class="review-grid">
+                <!-- Review 1 -->
+                <div class="review-card" data-category="headphones 5-star with-media">
+                    <div class="review-header">
+                        <div class="review-product">Wireless Noise-Canceling Headphones</div>
+                        <div class="review-date">May 15, 2023</div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="review-content">
+                        These are by far the best headphones I've ever owned. The noise cancellation is incredible - I can't even hear my neighbor's dog barking anymore! Battery life is as advertised.
+                    </div>
+                    <div class="review-images">
+                        <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aGVhZHBob25lc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Headphones" class="review-image">
+                        <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhlYWRwaG9uZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Headphones in case" class="review-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVhZHBob25lc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Headphones on desk" class="review-image">
+                    </div>
+                    <div class="review-helpful">
+                        <button><i class="fas fa-thumbs-up"></i></button>
+                        <span>42 people found this helpful</span>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="review-card" data-category="camera 4-star">
+                    <div class="review-header">
+                        <div class="review-product">4K Action Camera</div>
+                        <div class="review-date">April 28, 2023</div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="review-content">
+                        Great camera for the price. The image stabilization works really well for biking and skiing. Battery life could be better, but extra batteries are affordable. The mobile app needs some improvement though.
+                    </div>
+                    <div class="review-helpful">
+                        <button><i class="fas fa-thumbs-up"></i></button>
+                        <span>18 people found this helpful</span>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="review-card" data-category="smart-home 5-star with-media">
+                    <div class="review-header">
+                        <div class="review-product">Smart Home Hub Pro</div>
+                        <div class="review-date">June 2, 2023</div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="review-content">
+                        This hub has unified all my smart devices perfectly. Setup was straightforward and it works with all major brands. The automation features have saved me so much time.
+                    </div>
+                    <div class="review-images">
+                        <img src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c21hcnQlMjBob21lfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Smart home hub" class="review-image">
+                    </div>
+                    <div class="review-helpful">
+                        <button><i class="fas fa-thumbs-up"></i></button>
+                        <span>29 people found this helpful</span>
+                    </div>
+                </div>
+                
+                <!-- Review 4 -->
+                <div class="review-card" data-category="wearables 5-star">
+                    <div class="review-header">
+                        <div class="review-product">Fitness Tracker Pro</div>
+                        <div class="review-date">May 20, 2023</div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="review-content">
+                        Accurate heart rate monitoring and the GPS works perfectly for my runs. The battery lasts a full week with always-on display disabled. The companion app provides great insights into my health metrics.
+                    </div>
+                    <div class="review-helpful">
+                        <button><i class="fas fa-thumbs-up"></i></button>
+                        <span>56 people found this helpful</span>
+                    </div>
+                </div>
+                
+                <!-- Review 5 -->
+                <div class="review-card" data-category="camera 5-star with-media">
+                    <div class="review-header">
+                        <div class="review-product">4K Action Camera</div>
+                        <div class="review-date">April 10, 2023</div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="review-content">
+                        Used this on my diving trip and the underwater footage is stunning! The color correction feature works magic. Bought the dive housing which was worth every penny.
+                    </div>
+                    <div class="review-images">
+                        <img src="https://images.unsplash.com/photo-1520390138845-fd2d229dd553?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFjdGlvbiUyMGNhbWVyYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Action camera" class="review-image">
+                        <img src="https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFjdGlvbiUyMGNhbWVyYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Camera underwater" class="review-image">
+                    </div>
+                    <div class="review-helpful">
+                        <button><i class="fas fa-thumbs-up"></i></button>
+                        <span>73 people found this helpful</span>
+                    </div>
+                </div>
+                
+                <!-- Review 6 -->
+                <div class="review-card" data-category="headphones 4-star">
+                    <div class="review-header">
+                        <div class="review-product">Wireless Noise-Canceling Headphones</div>
+                        <div class="review-date">March 22, 2023</div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="review-content">
+                        Very good sound quality and the ANC works well. My only complaint is they get uncomfortable after 3-4 hours of continuous use. Customer service was excellent when I had an issue with the charging port.
+                    </div>
+                    <div class="review-helpful">
+                        <button><i class="fas fa-thumbs-up"></i></button>
+                        <span>12 people found this helpful</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">Headphones</a></li>
+                        <li><a href="#">Cameras</a></li>
+                        <li><a href="#">Smart Home</a></li>
+                        <li><a href="#">Wearables</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Product Manuals</a></li>
+                        <li><a href="#">Software Updates</a></li>
+                        <li><a href="#">Warranty</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <p style="margin-top: 20px;">Subscribe to our newsletter for product updates and special offers.</p>
+                    <input type="email" placeholder="Your email" style="padding: 10px; width: 100%; margin-top: 10px; border-radius: 4px; border: none;">
+                    <button class="btn" style="margin-top: 10px; width: 100%;">Subscribe</button>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 TechSolutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="chat-bubble" id="chat-bubble">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <script>
+        // FAQ Toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                answer.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
+        });
+        
+        // Review filtering
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                const reviews = document.querySelectorAll('.review-card');
+                
+                reviews.forEach(review => {
+                    if (filter === 'all') {
+                        review.style.display = 'block';
+                    } else {
+                        if (review.dataset.category.includes(filter)) {
+                            review.style.display = 'block';
+                        } else {
+                            review.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Chat functionality with localStorage for persistence
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-button');
+        const chatBubble = document.getElementById('chat-bubble');
+        const chatContainer = document.querySelector('.chat-container');
+        
+        // Load chat history from localStorage
+        function loadChatHistory() {
+            const history = localStorage.getItem('chatHistory');
+            if (history) {
+                chatMessages.innerHTML = history;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } else {
+                // Initial support message
+                addMessage('support', 'Hello! Thanks for reaching out to TechSolutions support.');
+            }
+        }
+        

@@ -37,14 +37,13 @@
                         </div>
                     </div>
 
-                    <a href="contact.html" class="login__forgot">Forgot your password? Contact Admin.</a>
+                    <a href="resetpassword.html" class="login__forgot" onclick="storeResetEmail()">Forgot your password? Click here to reset</a>
 
-
-                    <button type="submit" class="login__button">Login</button>
+                    <button type="submit" class="login__button">Log In</button>
 
                     <p class="login__switch">
                         Don't have an account? 
-                        <button type="button" id="loginButtonRegister">Create Account</button>
+                        <button type="button" id="loginButtonRegister">Sign Up</button>
                     </p>
 
 <!-- march 26 -->
@@ -122,13 +121,9 @@
     </div>
 </div>
 
-
-
-
-
 <!-- 1 -->
 
-                    <button type="submit" class="login__button">Create account</button>
+                    <button type="submit" class="login__button">Sign Up</button>
 
                     <p class="login__switch">
                         Already have an account? 
@@ -141,5 +136,21 @@
 
     <!-- JavaScript -->
     <script src="userlogin.js"></script>
+
+    <!-- Add this script to store the email when "Forgot Password" is clicked -->
+    <script>
+        function storeResetEmail() {
+            const email = document.getElementById("loginEmail").value.trim();
+            if (email) {
+                localStorage.setItem("resetEmail", email);
+            } else {
+                alert("Please enter your email before resetting password.");
+            }
+        }
+    </script>
+
+
+
 </body>
 </html>
+

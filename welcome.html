@@ -41,7 +41,7 @@
     <div class="welcome-box">
         <h1 id="welcomeMessage"></h1>
         <p>Redirecting to home page in <span id="countdown">5</span> seconds...</p>
-        <a href="index.html" class="home-btn">Go to Home Now</a>
+        <a href="startpage.html" class="home-btn">Go to Home Now</a>
     </div>
 
     <script>
@@ -60,7 +60,7 @@
             countdownElement.textContent = countdown;
             if (countdown === 0) {
                 clearInterval(timer);
-                window.location.href = "index.html"; // Redirect after 5 seconds
+                window.location.href = "startpage.html"; // Redirect after 5 seconds
             }
         }, 1000);
     </script>

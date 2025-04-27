@@ -8,6 +8,142 @@
 
     <script>
 
+
+
+
+
+       
+
+
+//april 18 2025
+document.addEventListener('DOMContentLoaded', function() {
+    // Create popup elements
+    const popupOverlay = document.createElement('div');
+    popupOverlay.className = 'quote-popup-overlay';
+    popupOverlay.style.cssText = `
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    `;
+    
+    const popupContent = document.createElement('div');
+    popupContent.className = 'quote-popup-content';
+    popupContent.style.cssText = `
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 400px;
+        position: relative;
+        animation: fadeIn 0.3s ease-out;
+    `;
+    
+    const closeBtn = document.createElement('span');
+    closeBtn.className = 'close-quote-popup';
+    closeBtn.innerHTML = '&times;';
+    closeBtn.style.cssText = `
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+    `;
+    
+    const popupHeading = document.createElement('h3');
+    popupHeading.textContent = 'Minimum Order Requirement';
+    popupHeading.style.marginTop = '0';
+    
+    const popupMessage = document.createElement('p');
+    popupMessage.textContent = 'Minimum order value should be ₹5k to ₹10k';
+    
+    // Build popup structure
+    popupContent.appendChild(closeBtn);
+    popupContent.appendChild(popupHeading);
+    popupContent.appendChild(popupMessage);
+    popupOverlay.appendChild(popupContent);
+    document.body.appendChild(popupOverlay);
+    
+    // Add animation style
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 480px) {
+            .quote-popup-content {
+                width: 85%;
+                padding: 20px 15px;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Show popup function
+    function showPopup(productName) {
+        popupOverlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        if (productName) {
+            popupHeading.textContent = productName;
+          //  popupMessage.textContent = `Minimum order value for ${productName} should be ₹5k to ₹10k`;
+          popupMessage.textContent = `Minimum order value should be ₹5k to ₹10k`;
+        }
+    }
+    
+    // Hide popup function
+    function hidePopup() {
+        popupOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    
+    // Add events to all quote buttons
+    document.querySelectorAll('.blue-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productName = this.closest('.product-text-container').querySelector('h1').textContent;
+            showPopup(productName);
+        });
+        
+        // For better mobile touch response
+        button.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            const productName = this.closest('.product-text-container').querySelector('h1').textContent;
+            showPopup(productName);
+        });
+    });
+    
+    // Close popup events
+    closeBtn.addEventListener('click', hidePopup);
+    popupOverlay.addEventListener('click', function(e) {
+        if (e.target === popupOverlay) {
+            hidePopup();
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popupOverlay.style.display === 'flex') {
+            hidePopup();
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+//april 18 2025
+
+
 // i added this on jan 21 works for laptop ---1
         document.querySelectorAll('#navbar-links > li').forEach((item) => {
             item.addEventListener('click', () => {
@@ -73,6 +209,11 @@ function closePopup() {
 
 
 
+
+
+
+
+
 //jan 21 works for mobile
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('#menu-toggle');
@@ -91,6 +232,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 //jan 21 works for mobile
+
+
+
+
+
 
 
         document.addEventListener('DOMContentLoaded', () => {   
@@ -369,6 +515,21 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeSlideshow(); // ✅ Initialize images on page load
 });
 
+
+
+
+//april 4
+
+
+
+
+
+
+//april4
+
+
+
+
     </script>
     <title>Document</title>
 </head>
@@ -387,11 +548,65 @@ document.addEventListener("DOMContentLoaded", () => {
                 <!-- <div class="navbar__logo--text">Sri&Co</div> -->
             </div>
 
-            <div id="menu-bar">
+
+<!-- aprilo 20 -->
+ 
+
+
+<div style="display: flex; align-items: center; gap: 8px; position: fixed; top: 10px; right: 10px; z-index: 1000;">
+    <!-- Search button - Hidden on tablets and larger -->
+    <button 
+        style="
+            background: none; 
+            border: none; 
+            padding: 0; 
+            cursor: pointer;
+            display: none; /* Hidden by default */
+        "
+        onclick="window.location.href='example.html?focus=1';"
+        class="mobile-search-icon"
+    >
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#007bff">
+            <circle cx="11" cy="11" r="8" stroke-width="2"/>
+            <path d="M21 21L16.65 16.65" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </button>
+
+    <!-- Hamburger menu -->
+    <div 
+        id="menu-bar" 
+        style="background: none; border: none; padding: 0; cursor: pointer;"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+        </svg>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- aprilo 20 -->
+
+<!-- THIS IS FOR SINGLE HAMBERGER -->
+            <!-- <div id="menu-bar">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
                 </svg>
-            </div>
+            </div> -->
+            <!-- THIS IS FOR SINGLE HAMBERGER -->
 
 <!-- jan 21  jan 21 works for mobile-->
             <!-- <button id="menu-toggle" class="mobile-menu-toggle">
@@ -552,6 +767,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <div id="navbar-links">
                 <ul>
+
+<!--  -->
+
+<!-- <form style="display: flex; gap: 5px;" onsubmit="return false;">
+    <input 
+      type="text" 
+      placeholder="Search products..." 
+      onclick="window.location.href='example.html';" 
+      readonly 
+      style="cursor: pointer;" 
+    />
+  </form> -->
+  
+  <form style="display: flex; gap: 5px;" onsubmit="return false;">
+    <input 
+      type="text" 
+      placeholder="Search products..." 
+      onclick="window.location.href='example.html?focus=1';" 
+      readonly 
+      style="cursor: pointer;" 
+    />
+  </form>
+ 
+
+  
+
+<!--  -->
+
+
+
+
+
+
+
                     <li>
                         <a href="startpage.html">
                             Home </a>
@@ -571,6 +820,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             AboutUs
                         </a>
                     </li>
+
+                    <li>
+                        <a href="ServiceApril.html">
+                          Services
+                        </a>
+                    </li>
                     <!-- <li>
                         <a href="service.html">
                             Services
@@ -582,6 +837,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     </li>
 
+
+
 <!--march 2  -->
 <li id="loginSignup">
     <a href="userlogin.html">Login/Signup</a>
@@ -591,11 +848,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <!--  march 2-->
 
+<!--  -->
+
+<!-- 🔍 Search Bar -->
+<!-- <div id="search-container" style="margin: 20px auto; max-width: 600px; text-align: center;">
+    <input type="text" id="searchInput" placeholder="Search for products..."
+           style="width: 80%; padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc;">
+    <p id="noResults" style="display: none; color: red; font-weight: bold; margin-top: 10px;">
+        No products found 😔
+    </p>
+</div> -->
 
 
-
-
-
+<!--  -->
                 </ul>
 
 <!-- march2 -->
@@ -626,10 +891,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
  <!-- MENU BAR PAGE -->
  <div id="menu-page">
     <div id="menu-page-wrapper">
         <ul>
+
+
 
             <!-- march 23 2025-->
             <li>
@@ -655,6 +925,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     Services
                 </a>
             </li> -->
+            <li>
+                <a href="ServiceApril.html">
+                  Services
+                </a>
+            </li>
+
+
             <li>
                 <a href="contact.html">
                    Contact
@@ -704,8 +981,12 @@ from reputable manufacturers and cater to a diverse clientele across India.
 Under the visionary guidance and support of our mentor, Mr. Kushal, we have built a reputation for 
 reliability, customer satisfaction, and trust in the electronics industry
                     </p>
-                    <a href="contact.html">
+                    <!-- <a href="contact.html">
                         <button class="blue-button">Contact Us</button>
+                    </a> -->
+                    
+                    <a href="Livechat.html" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-align: center; text-decoration: none; font-size: 16px; border-radius: 5px; cursor: pointer;">
+                        Contact Us
                     </a>
                     
                 </div>
@@ -832,7 +1113,7 @@ reliability, customer satisfaction, and trust in the electronics industry
 
                 <div class="product-category">
                     <div class="product-category-image-section">
-                        <img src="images/9.png" alt="">
+                        <img src="images/9.png" alt="Connector">
                     </div>
                     <div class="product-category-desc-section">
                         <span class="product-category-type">
@@ -846,7 +1127,7 @@ reliability, customer satisfaction, and trust in the electronics industry
 
                 <div class="product-category">
                     <div class="product-category-image-section">
-                        <img src="images/10.png" alt="">
+                        <img src="images/10.png" alt="Rectifiers Diodes">
                     </div>
                     <div class="product-category-desc-section">
                         <span class="product-category-type">
@@ -862,6 +1143,8 @@ reliability, customer satisfaction, and trust in the electronics industry
         </div> <!-- END OF PRODUCT CATEGORIES -->
 
 
+
+
         <!-- PRODUCT CARDS/SLIDESHOW -->
 
         <!-- "ALL" SECTION -->
@@ -874,6 +1157,8 @@ reliability, customer satisfaction, and trust in the electronics industry
                     </div>
                     <h1></h1>
                 </div>
+
+
 
                 <div class="slideshow-buttons-container top" data-slideshow="all">
                     <button class="slideshow-button prev-button">
@@ -906,7 +1191,7 @@ reliability, customer satisfaction, and trust in the electronics industry
                 <ul>
                     <li class="product-card">
                         <div class="product-image-container">
-                            <img src="images/23.png" alt="">
+                            <img src="images/23.png" alt="Analog Devices AD526JNZ Semiconductor">
                             <!-- <button class="heart-button">
                                 <svg viewBox="0 0 24 24" width="22px" height="22px" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -920,7 +1205,7 @@ reliability, customer satisfaction, and trust in the electronics industry
                             </button> -->
                         </div>
                         <div class="product-text-container">
-                            <h1>Analog Devices AD526JNZ SemiconductOR</h1>
+                            <h1>Analog Devices AD526JNZ Semiconductor</h1>
                             <!-- <p>₹ 110/Piece</p> -->
                             <p>Part Number: C408905</p>
                             <!-- <p> Programmable Binary Gains: 1 to 16</p> -->
@@ -929,11 +1214,15 @@ reliability, customer satisfaction, and trust in the electronics industry
                             <button class="blue-button">
                                Get Quote
                             </button>
+                          
                         </div>
                     </li>
+
+
+
                     <li class="product-card">
                         <div class="product-image-container">
-                            <img src="images/24.png" alt="">
+                            <img src="images/24.png" alt="Analog Devices AD539JNZ Semiconductor">
                             <!-- <button class="heart-button">
                                 <svg viewBox="0 0 24 24" width="22px" height="22px" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -960,7 +1249,7 @@ reliability, customer satisfaction, and trust in the electronics industry
                     </li>
                     <li class="product-card">
                         <div class="product-image-container">
-                            <img src="images/25.png" alt="">
+                            <img src="images/25.png" alt="Analog Devices AD561JNZ Semiconductor">
                             <!-- <button class="heart-button">
                                 <svg viewBox="0 0 24 24" width="22px" height="22px" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -987,7 +1276,7 @@ reliability, customer satisfaction, and trust in the electronics industry
                     </li>
                     <li class="product-card">
                         <div class="product-image-container">
-                            <img src="images/26.png" alt="">
+                            <img src="images/26.png" alt="AD557JNZ Semiconductor Rectifier">
                             <!-- <button class="heart-button">
                                 <svg viewBox="0 0 24 24" width="22px" height="22px" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -1014,7 +1303,7 @@ reliability, customer satisfaction, and trust in the electronics industry
                     </li>
                     <li class="product-card">
                         <div class="product-image-container">
-                            <img src="images/27.png" alt="">
+                            <img src="images/27.png" alt="Bat20jfilm Rectifiers">
                             <!-- <button class="heart-button">
                                 <svg viewBox="0 0 24 24" width="22px" height="22px" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -1284,7 +1573,7 @@ reliability, customer satisfaction, and trust in the electronics industry
         <ul>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/28.png" alt="">
+                    <img src="images/28.png" alt="Microchip Integrated Circuits">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -1302,7 +1591,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/29.png" alt="">
+                    <img src="images/29.png" alt="AD8065ARZ AD8065ARZ-REEL">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -1320,7 +1609,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/30.png" alt="Product 1">
+                    <img src="images/30.png" alt="ic-uc3844bn-stmicroelectronics">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -1333,7 +1622,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/31.png" alt="Product 1">
+                    <img src="images/31.png" alt="switching-controllers-regulating-pulse-ic-sg3524n-ti-125x125">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -1346,7 +1635,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/32.png" alt="Product 1">
+                    <img src="images/32.png" alt="cd4013be-ti-flip-flops-dual-cmos-ic">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -1714,7 +2003,7 @@ reliability, customer satisfaction, and trust in the electronics industry
         <ul>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/38.png" alt="Product 1">
+                    <img src="images/38.png" alt="STM32F030K6T6 ST Microcontrollers">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -1729,7 +2018,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/39.png" alt="Product 1">
+                    <img src="images/39.png" alt="Microcontroller Ic Chip">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -1744,13 +2033,13 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/40.png" alt="Product 1">
+                    <img src="images/40.png" alt="integrated-circuits-atmega8a-au-microchip-technology-atmel-125x125">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
                 </div>
                 <div class="product-text-container">
-                    <h1>integrated-circuits-atmega8a-au-microchip-technology-atmel-125x125</h1>
+                    <h1>Integrated-circuits-atmega8a-au-microchip-technology-atmel-125x125</h1>
                     <!-- <p>₹ 63/Piece</p>
                     <p>Part Number: STM32F030K6T6</p>
                     <p>Dimensions: LQFP 32</p> -->
@@ -1774,7 +2063,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             <!-- </li> -->
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/42.png" alt="Product 1">
+                    <img src="images/42.png" alt="Microchip Microcontroller">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -1789,7 +2078,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/43.png" alt="Product 1">
+                    <img src="images/43.png" alt="Microcontroller Ic">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2066,7 +2355,7 @@ reliability, customer satisfaction, and trust in the electronics industry
         <ul>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/51.png" alt="Product 1">
+                    <img src="images/51.png" alt="SM4224 , SM4224">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2081,7 +2370,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/52.png" alt="Product 1">
+                    <img src="images/52.png" alt="2007198-2 , 2007198-2">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2096,7 +2385,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/53.png" alt="Product 1">
+                    <img src="images/53.png" alt="1888247-1 , 18882471">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2112,7 +2401,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/54.png" alt="Product 1">
+                    <img src="images/54.png" alt="SC2011C , SC2011C">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2128,7 +2417,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/55.png" alt="Product 1">
+                    <img src="images/55.png" alt="SM5724A , SM5724A">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2185,7 +2474,7 @@ reliability, customer satisfaction, and trust in the electronics industry
         <ul>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/56.png" alt="Product 1">
+                    <img src="images/56.png" alt="B340LB-13-F Rectifier Diode Schottky">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2200,7 +2489,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/57.png" alt="Product 1">
+                    <img src="images/57.png" alt="B340LB-13-F , B340LB-13F">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2527,7 +2816,7 @@ reliability, customer satisfaction, and trust in the electronics industry
         <ul>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/18.png" alt="Lead Tablet">
+                    <img src="images/18.png" alt="Analog Devices ADM2587EBRWZ-REEL7 Semiconductor Rectifier">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2535,14 +2824,14 @@ reliability, customer satisfaction, and trust in the electronics industry
                 <div class="product-text-container">
                     <h1>Analog Devices ADM2587EBRWZ-REEL7 Semiconductor Rectifier</h1>
                     <!-- <p>₹ 395/Piece</p> -->
-                    <p>Brand: Analog Devices</p>
-                       <p> Usage/Application: Electronics</p>
+                    <p>Brand:Analog Devices</p>
+                       <p> Usage: Electronics</p>
                     <button class="blue-button">Get Quote</button>
                 </div>
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/19.png" alt="Lead Tablet">
+                    <img src="images/19.png" alt="DS12C887 , DS12C887+">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2551,13 +2840,13 @@ reliability, customer satisfaction, and trust in the electronics industry
                     <h1>DS12C887 , DS12C887+</h1>
                     <p>Mounting Type: DIP</p>
                     <p>Memory: 113B</p>
-                       <p>Usage/Application: Clock & Timer ICs</p>
+                       <p>Usage: Clock & Timer ICs</p>
                     <button class="blue-button">Get Quote</button>
                 </div>
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/20.png" alt="Lead Tablet">
+                    <img src="images/20.png" alt="MCP1525T-I/TT , MCP1525T-I TT">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2572,7 +2861,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/21.png" alt="Lead Tablet">
+                    <img src="images/21.png" alt="DRV8432DKD , DRV8432DKD">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2587,7 +2876,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/22.png" alt="Lead Tablet">
+                    <img src="images/22.png" alt="SN74AHC125D">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2955,7 +3244,7 @@ reliability, customer satisfaction, and trust in the electronics industry
         <ul>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/101.png" alt="">
+                    <img src="images/101.png" alt="Arduino Boards (Open-source hardware)">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2967,7 +3256,7 @@ reliability, customer satisfaction, and trust in the electronics industry
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/102.png" alt="">
+                    <img src="images/102.png" alt="Raspberry Pi ">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2983,7 +3272,7 @@ proprietary components</p>
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/103.png" alt="">
+                    <img src="images/103.png" alt="ESP8266/ESP32 Modules">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -2992,14 +3281,14 @@ proprietary components</p>
                     <h1>ESP8266/ESP32 Modules</h1>
                     <p>Wi-Fi microcontrollers 
 by Espresso if</p>
-                    <p>commonly used in IoT projects</p>
+                    <!-- <p>commonly used in IoT projects</p> -->
                       
                     <button class="blue-button">Get Quote</button>
                 </div>
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/104.png" alt="">
+                    <img src="images/104.png" alt="PCB Prototypes & DIY Kits">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -3012,12 +3301,11 @@ by Espresso if</p>
                     <button class="blue-button">Get Quote</button>
                 </div>
             </li>
-            <li class="product-card">
+            
+            <!-- <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/.png" alt="">
-                    <!-- <button class="heart-button">
-                        <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                    </button> -->
+                    <img src="" alt="">
+                    
                 </div>
                 <div class="product-text-container">
                     <h1></h1>
@@ -3026,8 +3314,9 @@ by Espresso if</p>
                        <p></p>
                     <button class="blue-button">Get Quote</button>
                 </div>
-            </li>
-
+            </li> -->
+        
+        
 </ul>
     </div>
 
@@ -3079,7 +3368,7 @@ by Espresso if</p>
         <ul>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/115.png" alt="">
+                    <img src="images/115.png" alt="Sensors (Temperature, Motion, Gas ..)">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -3091,7 +3380,7 @@ by Espresso if</p>
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/116.png" alt="">
+                    <img src="images/116.png" alt="Resistors">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -3106,7 +3395,7 @@ by Espresso if</p>
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/117.png" alt="">
+                    <img src="images/117.png" alt="Capacitors">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -3121,7 +3410,7 @@ by Espresso if</p>
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/118.png" alt="">
+                    <img src="images/118.png" alt="Diodes">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -3136,7 +3425,7 @@ by Espresso if</p>
             </li>
             <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/119.png" alt="">
+                    <img src="images/119.png" alt="Transistors">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -3153,7 +3442,7 @@ by Espresso if</p>
 
 <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/120.png" alt="Lead Tablet">
+                    <img src="images/120.png" alt="Generic Lithium-ion Batteries">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -3166,7 +3455,7 @@ by Espresso if</p>
 
 <li class="product-card">
                 <div class="product-image-container">
-                    <img src="images/.png" alt="">
+                    <img src="" alt="Non-Branded LED Displays & Panels">
                     <!-- <button class="heart-button">
                         <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     </button> -->
@@ -3200,22 +3489,274 @@ by Espresso if</p>
 
 
 
+<!-- APRIL 2 -->
+
+
+
+<div class="product-section" id="product-section-d1">
+    <div class="product-section-top-container">
+        <div class="section-category-container">
+            <div class="section-category-type">
+                <span class="blue-line"></span>
+                <span class="section-category-text">Electronic Devices & Components
+</span>
+            </div>
+            <!-- <h1>Integrated Circuits</h1> -->
+        </div>
+        <div class="slideshow-buttons-container top" data-slideshow="d1">
+            <button class="slideshow-button prev-button">
+                <svg viewBox="0 0 24 24" fill="none" width="30px" height="30px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15 6L9 12L15 18" stroke="#414141" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            </button>
+            <button class="slideshow-button next-button">
+                <svg viewBox="0 0 24 24" fill="none" width="30px" height="30px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#414141" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            </button>
+        </div>
+    </div>
+    
+<div class="product-cards-container">
+        <ul>
+            <li class="product-card">
+                <div class="product-image-container">
+                    <img src="images/130.png" alt="Laptop">
+                    <!-- <button class="heart-button">
+                        <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </button> -->
+                </div>
+                <div class="product-text-container">
+                    <h1>Laptop</h1>
+                    <button class="blue-button">Get Quote</button>
+                </div>
+            </li>
+            <li class="product-card">
+                <div class="product-image-container">
+                    <img src="images/131.png" alt="Desktop PC">
+                    <!-- <button class="heart-button">
+                        <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </button> -->
+                </div>
+                <div class="product-text-container">
+                    <h1>Desktop PC
+</h1>
+                    <p></p>
+                    
+                    <button class="blue-button">Get Quote</button>
+                </div>
+            </li>
+            <li class="product-card">
+                <div class="product-image-container">
+                    <img src="images/132.png" alt="Online UPS systems">
+                    <!-- <button class="heart-button">
+                        <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </button> -->
+                </div>
+                <div class="product-text-container">
+                    <h1>Online UPS systems</h1>
+                    <p></p>
+                    <p></p>
+                      
+                    <button class="blue-button">Get Quote</button>
+                </div>
+            </li>
+            <li class="product-card">
+                <div class="product-image-container">
+                    <img src="images/133.png" alt="Inverters">
+                    <!-- <button class="heart-button">
+                        <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </button> -->
+                </div>
+                <div class="product-text-container">
+                    <h1>Inverters</h1>
+                    <p></p>
+                    <p></p>
+                       <p></p>
+                    <button class="blue-button">Get Quote</button>
+                </div>
+            </li>
+            <li class="product-card">
+                <div class="product-image-container">
+                    <img src="images/134.png" alt="Batteries">
+                    <!-- <button class="heart-button">
+                        <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </button> -->
+                </div>
+                <div class="product-text-container">
+                    <h1>Batteries</h1>
+                    <p></p>
+                    <p></p>
+                       <p></p>
+                    <button class="blue-button">Get Quote</button>
+                </div>
+            </li>
+
+
+<li class="product-card">
+                <div class="product-image-container">
+                    <img src="images/135.png" alt="Semiconductors">
+                    <!-- <button class="heart-button">
+                        <svg viewBox="0 0 24 24" width="22px" height="22px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </button> -->
+                </div>
+                <div class="product-text-container">
+                    <h1> Semiconductors</h1>
+                    
+                    <button class="blue-button">Get Quote</button>
+                    
+                   
+                </div>
+            </li>
 
 
 
 
 
+</ul>
+    </div>
+
+    <div class="slideshow-buttons-container bottom" data-slideshow="d1">
+        <button class="slideshow-button prev-button">
+            <svg viewBox="0 0 24 24" fill="none" width="30px" height="30px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15 6L9 12L15 18" stroke="#414141" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        </button>
+        <button class="slideshow-button next-button">
+            <svg viewBox="0 0 24 24" fill="none" width="30px" height="30px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke="#414141" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        </button>
+    </div>
+</div>
 
 
 
 
 
+<!-- APRIL 2 -->
 
 
 
 
 
 </div> <!-- END OF MAIN BODY -->
+
+
+
+
+
+
+<!--  -->
+
+
+<!-- Help Section Start -->
+<div class="help-container">
+    <div class="help-inner-container">
+        <!-- Support Section -->
+       
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <h2>What Our Customers Say</h2>
+            <p>Trusted by engineers and procurement professionals across industries.</p>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        Sri & Co has been our go-to supplier for hard-to-find components. Their team's technical knowledge saved us weeks of development time on our last project.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Raj Patel" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Raj Patel</h4>
+                            <p>Lead Engineer, ElectroTech Solutions</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        Their logistics are impeccable. We've never had a late delivery, even for rush orders. The quality of components consistently meets our high standards.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Sharma" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Procurement Manager, Avionix Systems</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        The technical support team helped us identify perfect alternates when we faced supply chain issues. Their expertise is worth every penny.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Arjun Mehta" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Arjun Mehta</h4>
+                            <p>CTO, GreenEnergy Devices</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+    
+<!-- Live Chat Widget (hidden by default) -->
+<div id="chat-widget" style="display:none; position:fixed; bottom:20px; right:20px; width:350px; background:white; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15); z-index:1000; border:1px solid #ddd;">
+    <div style="background:var(--primary); color:white; padding:12px; border-radius:8px 8px 0 0; display:flex; justify-content:space-between; align-items:center;">
+        <h3 style="margin:0; font-size:1rem;">Sri & Co Support</h3>
+        <button id="close-chat" style="background:none; border:none; color:white; cursor:pointer;">✕</button>
+    </div>
+    <div style="padding:1rem; height:300px; overflow-y:auto;">
+        <div style="background:#f1f1f1; padding:8px 12px; border-radius:4px; margin-bottom:8px; display:inline-block; max-width:80%;">
+            Hello! How can we assist you today?
+        </div>
+    </div>
+    <div style="padding:12px; border-top:1px solid #eee; display:flex;">
+        <input type="text" placeholder="Type your message..." style="flex:1; padding:8px; border:1px solid #ddd; border-radius:4px; margin-right:8px;">
+        <button style="background:var(--primary); color:white; border:none; padding:8px 12px; border-radius:4px; cursor:pointer;">Send</button>
+    </div>
+</div>
+
+<!-- Contact Us Section -->
+<div class="contact-us-container" style="margin-top: 40px; text-align: center; font-family: Arial, sans-serif;">
+    <p style="font-size: 1.2rem; color: #333; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 0.5s;">For any queries, please contact us through the following options:</p>
+    <div class="contact-options" style="margin-top: 20px; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 1s;">
+        <p style="font-size: 1.1rem; color: #333;">
+            You can reach us via email, phone, or directly through our <strong><a href="livechat.html" style="color: #0088CC; text-decoration: none; font-weight: bold; transition: color 0.3s ease-in-out;" onmouseover="this.style.color='#ff8c00'" onmouseout="this.style.color='#0088CC'">Live Chat</a></strong> page.
+        </p>
+    </div>
+    <div class="contact-methods" style="margin-top: 20px; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 1.5s;">
+        <p style="font-size: 1.1rem; color: #333;">
+            <strong style="color: #333; font-weight: bold;">Phone:</strong> 
+            <a href="tel:+919916001569" style="color: #0088CC; text-decoration: none; font-weight: bold; transition: color 0.3s ease-in-out;" onmouseover="this.style.color='#ff8c00'" onmouseout="this.style.color='#0088CC'">+91 99160 01569</a><br>
+            <strong style="color: #333; font-weight: bold;">Email:</strong> 
+            <a href="mailto:support@sriandco.com" style="color: #0088CC; text-decoration: none; font-weight: bold; transition: color 0.3s ease-in-out;" onmouseover="this.style.color='#ff8c00'" onmouseout="this.style.color='#0088CC'">support@sriandco.com</a>
+        </p>
+    </div>
+</div>
+
+
+
+
+
+<!-- Help Section End -->
+
+<!-- Include FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+<!--  -->
+
+
+
 
 </body>
 
@@ -3238,7 +3779,7 @@ by Espresso if</p>
                     </svg>
                 </a>
                 <div style="display: flex; flex-direction: column;">
-                    <span>9916001569</span>
+                    <!-- <span>9916001569</span> -->
                     <span>9353961627</span>
                 </div>
             </div>
@@ -3292,6 +3833,12 @@ by Espresso if</p>
             </li> -->
             <li>
                 <a href="contact.html">Contact</a>
+
+            </li>
+
+
+            <li>
+                <a href="ServiceApril.html">Service</a>
             </li>
         </ul>
         <p>
@@ -3300,3 +3847,9 @@ by Espresso if</p>
     </div>
 </footer>
 </html>
+
+
+
+
+
+

@@ -1,96 +1,104 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ===================== REGISTER FUNCTION =====================
+    // Enable/Disable submit button based on input validity
+    function toggleSubmitButton() {
+        const submitButton = document.getElementById("submitButton");
+
+        const regName = document.getElementById("registerName").value.trim();
+        const regEmail = document.getElementById("registerEmail").value.trim();
+        const regPhone = document.getElementById("registerPhone").value.trim();
+        const regPassword = document.getElementById("registerPassword").value.trim();
+        const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+        const nameValid = /^[a-zA-Z\s]{2,50}$/.test(regName);
+        const emailValid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(regEmail);
+        const phoneValid = /^\d{10}$/.test(regPhone);
+        const passwordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(regPassword);
+        const passwordsMatch = regPassword === confirmPassword;
+
+        submitButton.disabled = !(nameValid && emailValid && phoneValid && passwordValid && passwordsMatch);
+    }
+
+    // Add input listeners for real-time validation
+    ["registerName", "registerEmail", "registerPhone", "registerPassword", "confirmPassword"].forEach(id => {
+        document.getElementById(id).addEventListener("input", toggleSubmitButton);
+    });
+
+    // Register Form Submission
     document.getElementById("registerForm").addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
 
-        let regName = document.getElementById("registerName").value.trim();
-        let regPhone = document.getElementById("registerPhone").value.trim();
-        let regEmail = document.getElementById("registerEmail").value.trim();
-        let regPassword = document.getElementById("registerPassword").value.trim();
-        let confirmPassword = document.getElementById("confirmPassword").value.trim();
+        const regName = document.getElementById("registerName").value.trim();
+        const regPhone = document.getElementById("registerPhone").value.trim();
+        const regEmail = document.getElementById("registerEmail").value.trim();
+        const regPassword = document.getElementById("registerPassword").value.trim();
+        const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
-        // Check if any field is empty
-        if (regName === "" || regPhone === "" || regEmail === "" || regPassword === "" || confirmPassword === "") {
+        if (!regName || !regPhone || !regEmail || !regPassword || !confirmPassword) {
             alert("Please fill in all fields.");
             return;
         }
 
-        // Check if passwords match
         if (regPassword !== confirmPassword) {
             alert("Passwords do not match. Please type the correct password.");
             return;
         }
 
-        // Check if user already exists
         if (localStorage.getItem(regEmail)) {
             alert("Email already registered! Try logging in.");
             return;
         }
 
-        // Store user data in localStorage
-        localStorage.setItem(regEmail, JSON.stringify({ 
-            name: regName, 
+        localStorage.setItem(regEmail, JSON.stringify({
+            name: regName,
             phone: regPhone,
-            password: regPassword 
+            password: regPassword
         }));
 
         alert("Account created successfully! You can now log in.");
     });
 
-    // ===================== LOGIN FUNCTION =====================
+    // Login Form Submission
     document.getElementById("loginForm").addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
 
-        let email = document.getElementById("loginEmail").value.trim();
-        let password = document.getElementById("loginPassword").value.trim();
-
-        let storedUser = localStorage.getItem(email);
+        const email = document.getElementById("loginEmail").value.trim();
+        const password = document.getElementById("loginPassword").value.trim();
+        const storedUser = localStorage.getItem(email);
 
         if (!storedUser) {
-            alert("User not found! Please register first.");
+            alert("User not found! Please register.");
             return;
         }
 
-        let userData = JSON.parse(storedUser);
-
+        const userData = JSON.parse(storedUser);
         if (password === userData.password) {
             alert(`Welcome, ${userData.name}! Login successful.`);
-            
-            // Store user name in localStorage
             localStorage.setItem("userName", userData.name);
-            
-            // Redirect to welcome page instead of index.html
-            window.location.href = "welcome.html"; 
+            window.location.href = "welcome.html";
         } else {
             alert("Invalid email or password!");
         }
     });
 
-    // ===================== PASSWORD SHOW/HIDE =====================
+    // Password Show/Hide
     function togglePassword(inputId, iconId) {
-        let input = document.getElementById(inputId);
-        let icon = document.getElementById(iconId);
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
 
         icon.addEventListener("click", () => {
-            if (input.type === "password") {
-                input.type = "text";
-                icon.classList.remove("ri-eye-off-fill");
-                icon.classList.add("ri-eye-fill");
-            } else {
-                input.type = "password";
-                icon.classList.remove("ri-eye-fill");
-                icon.classList.add("ri-eye-off-fill");
-            }
+            const isPassword = input.type === "password";
+            input.type = isPassword ? "text" : "password";
+            icon.classList.toggle("ri-eye-fill", isPassword);
+            icon.classList.toggle("ri-eye-off-fill", !isPassword);
         });
     }
 
-    // Enable Show/Hide Password Feature
     togglePassword("registerPassword", "toggleRegisterPassword");
     togglePassword("confirmPassword", "toggleConfirmPassword");
     togglePassword("loginPassword", "toggleLoginPassword");
 
-    // ===================== SWITCH BETWEEN LOGIN & REGISTER =====================
+    // Switch Login/Register Views
     document.getElementById("loginButtonRegister").addEventListener("click", () => {
         document.getElementById("loginAccessRegister").classList.add("active");
     });
@@ -99,4 +107,58 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("loginAccessRegister").classList.remove("active");
     });
 
+    // Real-time Validation on Blur
+    document.getElementById("registerName").addEventListener("blur", function () {
+        const value = this.value.trim();
+        if (value && !/^[a-zA-Z\s]{2,50}$/.test(value)) {
+            alert("Please enter a valid name (only alphabets and spaces, 2 to 50 characters).");
+            setTimeout(() => this.focus(), 0); // Safer approach
+        }
+    });
+
+
+    
+
+
+
+
+
+
+
+
+    document.getElementById("registerEmail").addEventListener("blur", function () {
+        const value = this.value.trim();
+        if (value && !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(value)) {
+            alert("Please enter a valid email address.");
+            setTimeout(() => this.focus(), 0); // Safer approach
+        }
+    });
+
+    document.getElementById("registerPhone").addEventListener("blur", function () {
+        const value = this.value.trim();
+        if (value && !/^\d{10}$/.test(value)) {
+            alert("Please enter a valid phone number (exactly 10 digits).");
+            setTimeout(() => this.focus(), 0); // Safer approach
+        }
+    });
+
+    document.getElementById("registerPassword").addEventListener("blur", function () {
+        const value = this.value.trim();
+        if (value && !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value)) {
+            alert("Password must be at least 8 characters long, contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and 1 special character.");
+            setTimeout(() => this.focus(), 0); // Safer approach
+        }
+    });
+
+    document.getElementById("confirmPassword").addEventListener("blur", function () {
+        const regPassword = document.getElementById("registerPassword").value.trim();
+        const confirmPassword = this.value.trim();
+        if (confirmPassword && confirmPassword !== regPassword) {
+            alert("Passwords do not match. Please type the correct password.");
+            setTimeout(() => this.focus(), 0); // Safer approach
+        }
+    });
+
 });
+
+

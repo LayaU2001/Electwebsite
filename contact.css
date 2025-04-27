@@ -6,7 +6,8 @@ body {
 
     /* feb 9 */
    
-      background: #f4f4f4;
+      /* background: #f4f4f4; */
+      background-color: #FFFFFF;
       /* background-color: #edf2fb; */
       padding: 20px;
     
@@ -44,7 +45,8 @@ body {
   textarea {
     padding: 10px 20px;
     margin: 8px 0;
-    background-color: #eeeeee;
+    /* background-color: #eeeeee; */
+    background-color: #FFFFFF;
     border: 1.5px solid #212529;
     border-radius: 3px;
   }
