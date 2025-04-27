@@ -14,12 +14,12 @@
 <body>
   <div class="hero">
     <div class="navbar container">
-      <div class="navbar__logo">
-        <img src="src/images/Logo/LogoWhite.svg" alt="" class="navbar__logo--image">
+      <div class="navbar__logo" aria-label="Company Logo">
+        <img src="src/images/Logo/LogoWhite.svg" alt="Company Logo" class="navbar__logo--image">
   <!-- 5 -->
   <div id="navbar">
     <div id="navbar-logo">
-        <img src="images/elife1.png" alt="Sri and Co">
+        <img src="images/elife1.png" alt="Sri and Co" aria-label="Sri and Co logo">
 
       
         <!-- <div class="navbar__logo--text">Sri&Co</div> -->
@@ -30,21 +30,21 @@
 
         <!-- <div class="navbar__logo--text">Start</div> -->
       </div>
-      <div class="navbar__menu hidden">
-        <a href="startpage.html" class="navbar__menu--1">Home</a>
-        <a href="aboutus.html" class="navbar__menu--2">AboutUs</a>
-        <a href="ServiceApril.html" class="navbar__menu--3">Services</a>
-        <a href="contact.html" class="navbar__menu--4">Contact</a>
+      <div class="navbar__menu hidden" aria-label="Navigation Menu">
+        <a href="startpage.html" class="navbar__menu--1" aria-label="Home Page">Home</a>
+        <a href="aboutus.html" class="navbar__menu--2" aria-label="About Us Page">AboutUs</a>
+        <a href="ServiceApril.html" class="navbar__menu--3" aria-label="Services Page">Services</a>
+        <a href="contact.html" class="navbar__menu--4" aria-label="Contact Page">Contact</a>
       </div>
 
       <div class="navbar__icons">
-        <i class="bi bi-list"></i>
-        <i class="bi bi-x-lg hide"></i>
+        <i class="bi bi-list" aria-label="Open Menu"></i>
+        <i class="bi bi-x-lg hide" aria-label="Close Menu"></i>
       </div>
     </div>
   </div>
 
-  <div class="sectionOne container text-center"> <div class="common-title">Contact Us</div>
+  <div class="sectionOne container text-center" aria-label="Contact Us Section"> <div class="common-title">Contact Us</div>
 </div>
  
 
@@ -52,22 +52,22 @@
 
   <div class="sectionTwo container grid">
     <div class="sectionTwo__left">
-      <form action="" class="form">
-        <label for="name">Name</label>
-        <input placeholder="Your name here" type="text" id="name">
+      <form action="" class="form" aria-labelledby="contact-form">
+        <label for="name" aria-label="Enter your name">Name</label>
+        <input placeholder="Your name here" type="text" id="name" aria-label="Your name here">
 
 
       
 
-        <label for="phone">Phone</label>
-<input placeholder="Your phone number here" type="text" id="phone">
+        <label for="phone" aria-label="Enter your phone number">Phone</label>
+<input placeholder="Your phone number here" type="text" id="phone" aria-label="Your phone number here">
 
-<label for="email">Email</label>
-<input placeholder="Your email here" type="text" id="email">
+<label for="email" aria-label="Enter your email">Email</label>
+<input placeholder="Your email here" type="text" id="email" aria-label="Your email here">
 
-        <label for="message">Message</label>
-        <textarea placeholder="Your message here" name="" id="message" cols="30" rows="6"></textarea>
-        <button type="submit" class="submit-btn dark-btn">Submit</button>
+        <label for="message" aria-label="Enter your message">Message</label>
+        <textarea placeholder="Your message here" name="" id="message" cols="30" rows="6" aria-label="Your message here"></textarea>
+        <button type="submit" class="submit-btn dark-btn" aria-label="Submit Form">Submit</button>
       </form>
     </div>
     
@@ -75,7 +75,7 @@
   
 
     <div class="sectionTwo__left">
-      <div class="sectionOne container text-center">
+      <div class="sectionOne container text-center" aria-label="Office Address">
         
         <div class="contact-info" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; background-color: #f9f9f9; border-radius: 5px; font-family: Arial, sans-serif;">
           <h3 style="margin-top: 0; margin-bottom: 10px; color: #333;">Office Address</h3>
@@ -88,24 +88,24 @@
 
         
 
-        <div class="contact-info" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; background-color: #f9f9f9; border-radius: 5px; font-family: Arial, sans-serif;">
+        <div class="contact-info"aria-label="Email Address" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; background-color: #f9f9f9; border-radius: 5px; font-family: Arial, sans-serif;">
           <h3 style="margin-top: 0; margin-bottom: 10px; color: #333;">Email</h3>
           <a href="mailto:sales@sriandcotechno.com" style="color: #007bff; text-decoration: none; font-weight: bold; display: inline-block; padding: 5px 10px; background-color: #f0f7ff; border-radius: 4px;">
             sales@sriandcotechno.com
           </a>
         </div>
             
-        <div class="contact-phones" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; background-color: #f9f9f9; border-radius: 5px; font-family: Arial, sans-serif;">
+        <div class="contact-phones" aria-label="Contact Numbers" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; background-color: #f9f9f9; border-radius: 5px; font-family: Arial, sans-serif;">
           <h3 style="margin-top: 0; margin-bottom: 10px; color: #333;">Contact Us</h3>
           
-          <div class="phone-item" style="margin-bottom: 8px;">
+          <div class="phone-item"  aria-label="Customer support" style="margin-bottom: 8px;">
               <span style="display: block; font-weight: bold; color: #555; margin-bottom: 3px;">Customer Support:</span>
               <a href="tel:+919916001569" style="color: #007bff; text-decoration: none; font-weight: bold; display: inline-block; padding: 5px 10px; background-color: #f0f7ff; border-radius: 4px;">
                   +91 99160 01569
               </a>
           </div>
           
-          <div class="phone-item">
+          <div class="phone-item" aria-label="sales inquiry">
               <span style="display: block; font-weight: bold; color: #555; margin-bottom: 3px;">Sales Inquiries:</span>
               <a href="tel:+919353961627" style="color: #007bff; text-decoration: none; font-weight: bold; display: inline-block; padding: 5px 10px; background-color: #f0f7ff; border-radius: 4px;">
                   +91 93539 61627
@@ -119,7 +119,7 @@
 
 
 
-    <img src="src/images/Contact/map.svg" alt="" class="sectionTwo__right responsive-image">
+    <img src="src/images/Contact/map.svg" alt="Map Location" class="sectionTwo__right responsive-image" aria-label="Location Map">
   </div>
 
 
@@ -130,7 +130,7 @@
 <!--  -->
 <div class="sectionTwo container grid"> 
   <h1>Our Location</h1>
-  <div class="map-container" style="width: 100%; max-width: 1200px; margin: 0 auto;">
+  <div class="map-container" style="width: 100%; max-width: 1200px; margin: 0 auto;" aria-label="Google Map Location">
     <!-- <div class="map-container" style="width: 100%;  margin: 0 auto;"></div> -->
       <iframe 
           width="100%" 
@@ -164,14 +164,14 @@
   <div class="footerWrapper">
     <div class="footerMenu container">
       <div class="footerMenu__left">
-        <img src="src/images/Logo/Logo.svg" alt="" class="footerMenu__left--logo">
+        <img src="src/images/Logo/Logo.svg" alt="" class="footerMenu__left--logo" aria-label="Footer Logo">
         <div class="footerMenu__left--text"></div>
       </div>
       <div class="footerMenu__right"></div>
     </div>
 
     <div class="footerLinks container">
-      <div class="footerLinks__socials">
+      <div class="footerLinks__socials" aria-label="Social Media Links">
         <img src="src/images/socials/facebook.svg" alt="" class="footerLinks__socials--1">
         <img src="src/images/socials/instagram.svg" alt="" class="footerLinks__socials--2">
         <img src="src/images/socials/twitter.svg" alt="" class="footerLinks__socials--3">
@@ -184,7 +184,7 @@
 
 
       
-      <div class="footerLinks__copyright text-white text-center"> Copyright © Sri&co 2024. All rights reserved.</div>
+      <div class="footerLinks__copyright text-white text-center" aria-label="Copyright Notice"> Copyright © Sri&co 2024. All rights reserved.</div>
     </div>
   </div>
 </body>

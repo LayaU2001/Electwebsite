@@ -270,7 +270,7 @@ h1 {
 
   <div id="customPopup" class="popup">
     <div class="popup-content">
-      <p>⚡ Minimum order should be 5000.</p>
+      <p>⚡ Minimum order should be atleast 5k to 10k.</p>
       <button onclick="closePopup()">OK</button>
     </div>
   </div>
@@ -292,7 +292,7 @@ h1 {
     </div>
 
     <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()">
+      <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()" aria-label="Search product">
     </div>
 
     <div class="product-cards-container">
@@ -306,6 +306,7 @@ h1 {
         name: "Analog Devices AD526JNZ Semiconductor",
         img: "images/23.png",
         description: "Part Number: C408905"
+        
       },
 
       

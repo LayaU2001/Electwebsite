@@ -109,16 +109,22 @@
 
     <h2>Upload MSME & IEC Documents</h2>
 
-    <label class="upload-container" for="fileInput">
+    <label class="upload-container" for="fileInput" aria-label="Click to upload MSME and IEC documents">
         📂 <strong>Click to Upload Documents</strong>
     </label>
-    <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.jpg,.png" multiple>
+    <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.jpg,.png" multiple aria-label="Choose files to upload" aria-describedby="fileInfo">
 
-    <div class="file-info" id="fileInfo">No files selected</div>
+    <div class="file-info" id="fileInfo" aria-live="polite">No files selected</div>
 
-    <div class="preview-container" id="previewContainer"></div>
+    <div class="preview-container" id="previewContainer" aria-label="Preview of uploaded files"></div>
 
-    <div class="success-message" id="successMessage">✅ Files uploaded successfully!</div>
+    <div class="success-message" id="successMessage" aria-live="assertive">✅ Files uploaded successfully!</div>
+
+
+
+
+
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

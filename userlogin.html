@@ -19,37 +19,37 @@
         
         <!-- ===== LOGIN FORM ===== -->
         <div class="login__access">
-            <h1 class="login__title">Log in to your account</h1>
+            <h1 class="login__title" aria-label="Log in to your account">Log in to your account</h1>
             
             <div class="login__area">
-                <form id="loginForm" class="login__form">
+                <form id="loginForm" class="login__form" aria-label="Login form">
                     <div class="login__content grid">
                         <div class="login__box">
-                            <input type="email" id="loginEmail" required placeholder=" " class="login__input">
+                            <input type="email" id="loginEmail" required placeholder=" " class="login__input" aria-label="Enter your email">
                             <label for="loginEmail" class="login__label">Email</label>
                             <i class="ri-mail-fill login__icon"></i>
                         </div>
 
                         <div class="login__box">
-                            <input type="password" id="loginPassword" required placeholder=" " class="login__input">
+                            <input type="password" id="loginPassword" required placeholder=" " class="login__input" aria-label="Enter your password">
                             <label for="loginPassword" class="login__label">Password</label>
-                            <i class="ri-eye-off-fill login__icon login__password" id="toggleLoginPassword"></i>
+                            <i class="ri-eye-off-fill login__icon login__password" id="toggleLoginPassword" aria-hidden="true"></i>
                         </div>
                     </div>
 
-                    <a href="resetpassword.html" class="login__forgot" onclick="storeResetEmail()">Forgot your password? Click here to reset</a>
+                    <a href="resetpassword.html" class="login__forgot" onclick="storeResetEmail()" aria-label="Forgot your password? Click here to reset">Forgot your password? Click here to reset</a>
 
-                    <button type="submit" class="login__button">Log In</button>
+                    <button type="submit" class="login__button" aria-label="Login button">Log In</button>
 
                     <p class="login__switch">
                         Don't have an account? 
-                        <button type="button" id="loginButtonRegister">Sign Up</button>
+                        <button type="button" id="loginButtonRegister" aria-label="Sign up button">Sign Up</button>
                     </p>
 
 <!-- march 26 -->
-<div id="userAdminButtons" class="hidden">
-    <a href="userlogin.html" class="login__button small-btn">User</a>
-    <a href="admin.html" class="login__button small-btn">Admin (MSME & IEC UPLOAD BOX)</a>
+<div id="userAdminButtons" class="hidden" aria-hidden="true">
+    <a href="userlogin.html" class="login__button small-btn" aria-label="User login button">User</a>
+    <a href="admin.html" class="login__button small-btn" aria-label="Admin login button (MSME & IEC UPLOAD BOX)">Admin (MSME & IEC UPLOAD BOX)</a>
 </div>
 <!-- march 26 -->
                 </form>
@@ -91,31 +91,31 @@
 
 <div class="login__content grid">
     <div class="login__box">
-        <input type="text" id="registerName" required placeholder=" " class="login__input">
+        <input type="text" id="registerName" required placeholder=" " class="login__input" aria-label="Enter your name">
         <label for="registerName" class="login__label">Name</label>
         <i class="ri-id-card-fill login__icon"></i>
     </div>
 
     <div class="login__box">
-        <input type="tel" id="registerPhone" required placeholder=" " class="login__input">
+        <input type="tel" id="registerPhone" required placeholder=" " class="login__input" aria-label="Enetr phone number">
         <label for="registerPhone" class="login__label">Phone Number</label>
         <i class="ri-phone-fill login__icon"></i>
     </div>
 
     <div class="login__box">
-        <input type="email" id="registerEmail" required placeholder=" " class="login__input">
+        <input type="email" id="registerEmail" required placeholder=" " class="login__input" aria-label="Enter your email">
         <label for="registerEmail" class="login__label">Email</label>
         <i class="ri-mail-fill login__icon"></i>
     </div>
 
     <div class="login__box">
-        <input type="password" id="registerPassword" required placeholder=" " class="login__input">
+        <input type="password" id="registerPassword" required placeholder=" " class="login__input" aria-label="Enter valid password">
         <label for="registerPassword" class="login__label">Password</label>
         <i class="ri-eye-off-fill login__icon login__password" id="toggleRegisterPassword"></i>
     </div>
 
     <div class="login__box">
-        <input type="password" id="confirmPassword" required placeholder=" " class="login__input">
+        <input type="password" id="confirmPassword" required placeholder=" " class="login__input" aria-label="confirm password">
         <label for="confirmPassword" class="login__label">Confirm Password</label>
         <i class="ri-eye-off-fill login__icon login__password" id="toggleConfirmPassword"></i>
     </div>
@@ -123,11 +123,11 @@
 
 <!-- 1 -->
 
-                    <button type="submit" class="login__button">Sign Up</button>
+                    <button type="submit" class="login__button" aria-label="sign up button">Sign Up</button>
 
                     <p class="login__switch">
                         Already have an account? 
-                        <button type="button" id="loginButtonAccess">Log In</button>
+                        <button type="button" id="loginButtonAccess" aria-label="log In button">Log In</button>
                     </p>
                 </form>
             </div>
